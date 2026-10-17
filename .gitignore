@@ -1,0 +1,8 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# the built index is reproducible from `make ingest` -- keep it out of git
+data/index/*.json
+!data/index/.gitkeep
