@@ -1,0 +1,175 @@
+[
+  {
+    "q": "What happens at the end of a round?",
+    "relevant": [
+      "c0094",
+      "c0107",
+      "c0003"
+    ],
+    "answerable": true
+  },
+  {
+    "q": "How do I set up the birdfeeder?",
+    "relevant": [
+      "c0088",
+      "c0001"
+    ],
+    "answerable": true
+  },
+  {
+    "q": "Can I play a bird in any habitat I want?",
+    "relevant": [
+      "c0002"
+    ],
+    "answerable": true
+  },
+  {
+    "q": "What do I do when I draw bird cards?",
+    "relevant": [
+      "c0103"
+    ],
+    "answerable": true
+  },
+  {
+    "q": "How many bonus cards do I keep during setup?",
+    "relevant": [
+      "c0001"
+    ],
+    "answerable": true
+  },
+  {
+    "q": "What is the egg limit on a bird?",
+    "relevant": [
+      "c0100",
+      "c0012"
+    ],
+    "answerable": true
+  },
+  {
+    "q": "How does the first player token move between rounds?",
+    "relevant": [
+      "c0094",
+      "c0107",
+      "c0003"
+    ],
+    "answerable": true
+  },
+  {
+    "q": "How is the winner decided at the end of the game?",
+    "relevant": [
+      "c0107",
+      "c0108"
+    ],
+    "answerable": true
+  },
+  {
+    "q": "What is the Duet map?",
+    "relevant": [
+      "c0053",
+      "c0067"
+    ],
+    "answerable": true
+  },
+  {
+    "q": "How is Duet mode different from the base game?",
+    "relevant": [
+      "c0033",
+      "c0053"
+    ],
+    "answerable": true
+  },
+  {
+    "q": "How do I set up the Asia expansion?",
+    "relevant": [
+      "c0031",
+      "c0035"
+    ],
+    "answerable": true
+  },
+  {
+    "q": "What does a white power on a bird card mean?",
+    "relevant": [
+      "c0106"
+    ],
+    "answerable": true
+  },
+  {
+    "q": "When do pink powers trigger?",
+    "relevant": [
+      "c0105"
+    ],
+    "answerable": true
+  },
+  {
+    "q": "Can a bird power let me go over my egg limit?",
+    "relevant": [
+      "c0012",
+      "c0061"
+    ],
+    "answerable": true
+  },
+  {
+    "q": "How does the Automa take its turn?",
+    "relevant": [
+      "c0077"
+    ],
+    "answerable": true
+  },
+  {
+    "q": "What does the Automa do with bird cards?",
+    "relevant": [
+      "c0074",
+      "c0078"
+    ],
+    "answerable": true
+  },
+  {
+    "q": "How do I get more eggs onto my birds?",
+    "relevant": [
+      "c0100"
+    ],
+    "answerable": true
+  },
+  {
+    "q": "What do I do when my turn comes around?",
+    "relevant": [
+      "c0092",
+      "c0097"
+    ],
+    "answerable": true
+  },
+  {
+    "q": "Where am I allowed to put a new bird?",
+    "relevant": [
+      "c0002"
+    ],
+    "answerable": true
+  },
+  {
+    "q": "Who designed Wingspan?",
+    "relevant": [],
+    "answerable": false
+  },
+  {
+    "q": "How much does the Wingspan box cost?",
+    "relevant": [],
+    "answerable": false
+  },
+  {
+    "q": "Can I play Wingspan with eight players?",
+    "relevant": [
+      "c0034"
+    ],
+    "answerable": true
+  },
+  {
+    "q": "What is the capital of France?",
+    "relevant": [],
+    "answerable": false
+  },
+  {
+    "q": "How do I play Catan?",
+    "relevant": [],
+    "answerable": false
+  }
+]

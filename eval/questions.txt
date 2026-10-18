@@ -1,0 +1,52 @@
+# Questions for the eval set -- one per line.
+#   uv run --env-file .env python scripts/label.py --from eval/questions.txt
+#
+# These are a starting point, not the finished set. Delete any whose answer
+# turns out not to be in the corpus, and add your own -- especially questions
+# phrased the way a player would say them out loud rather than the way the
+# rulebook writes them. Lines starting with # are skipped.
+
+# --- base rulebook ---------------------------------------------------------
+# How many action cubes does each player start with?
+What happens at the end of a round?
+How do I set up the birdfeeder?
+Can I play a bird in any habitat I want?
+What do I do when I draw bird cards?
+How many bonus cards do I keep during setup?
+What is the egg limit on a bird?
+How does the first player token move between rounds?
+What happens if I have no space left on my player mat?
+How is the winner decided at the end of the game?
+
+# --- Asia expansion --------------------------------------------------------
+What is the Duet map?
+How is Duet mode different from the base game?
+How do I score Duet tokens?
+How many players does Duet mode support?
+How do I set up the Asia expansion?
+
+# --- bird powers (appendix) ------------------------------------------------
+What does a white power on a bird card mean?
+When do pink powers trigger?
+What happens if a bird power cannot be fully resolved?
+Can a bird power let me go over my egg limit?
+
+# --- Automa / solo ---------------------------------------------------------
+How does the Automa take its turn?
+How do I win against the Automa?
+What does the Automa do with bird cards?
+
+# --- paraphrased: the same rules asked in a player's words -----------------
+# These are the ones where embeddings should beat BM25. Keep them.
+How do I get more eggs onto my birds?
+What do I do when my turn comes around?
+Where am I allowed to put a new bird?
+How do I know who goes first?
+
+# --- unanswerable: these must return "I don't know" ------------------------
+# Check each one -- if the rulebook does answer it, move it up and label it.
+Who designed Wingspan?
+How much does the Wingspan box cost?
+Can I play Wingspan with eight players?
+What is the capital of France?
+How do I play Catan?
