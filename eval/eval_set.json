@@ -6,7 +6,12 @@
       "c0107",
       "c0003"
     ],
-    "answerable": true
+    "answerable": true,
+    "relevant_text": [
+      "5 Round Structure When all players have placed all of their action cubes, the round is over. Follow these steps in order: 1. Remove all action cubes from your player mat. 2. Score the end-of-round goal for the round you just completed. 3. Discard all face-up bird cards on the bird tray and restock the bird tray with cards from the deck. 4. Rotate the first player token clockwise to the next player. Use 1 of your action cubes to mark your score on the end-of-round goal. As a result, you will have 1 fewer action cube to use each round: • Round 1: 8 turns per player • Round 2: 7 turns per player • Round 3: 6 turns per player • Round 4: 5 turns per player Game End and Scoring The game ends at the conclusion of Round 4. Use the scorepad to add together the following: • Points for each face-up bird card on your player mat (printed on the cards) • Points for each bonus card (printed on the cards) • Points for end-of-round goals (shown on goal board) • 1 point for each: » egg on a bird card » food token cached on a bird card » card tucked under a bird card The player who has the most points wins. In the case of a tie, the player with the most unused food tokens wins. If players are still tied, they share the victory. DESIGNER’S NOTE: Players have fewer actions as the game progresses, but the bird powers create powerful combinations as birds accumulate in each row of the player mats. Painted Bunting Passerina ciris Poachers sell these birds as pets, making it harder for wild populations to thrive. 23cm 5 WHEN PLAYED: Draw 2 bonus cards and keep 1. + +",
+      "11 When players have placed all their available action cubes (1 cube per turn), the round is over. At round end: 1. Remove all action cubes from your player mat. 2. Score the end-of-round goal for the round you just completed. 3. Discard all face-up bird cards on the bird tray and replenish them. 4. Rotate the first player token clockwise to the next player. Scoring End-of-Round Goals The end-of-round goals are based on how many birds or eggs you have in a given habitat or nest type. To indicate the points you score from that goal, each player must place an action cube on the goal board (even if you score 0 points). The board has 2 sides, each using a different scoring method. Green is the default, but blue is good for new players. Green: Majority of the targeted item This method uses the side of the goal board that has spaces for 1st, 2nd, and 3rd place. At the end of the round, count your quantity of the targeted item. Players compare their results and place their action cubes based on their rank order. If players tie, place both cubes on the tied place, and do not award the next place. At game end, you will add the points for that place and the next place(s), then divide by the number of players who tied and round down (4th place scores 0 points). For example, when using the goal that scores 5, 2, or 1 points, if two players tie for 1st place, each gets 3 points (5 + 2 divided by 2 players, rounded down). Do not award 2nd place to another player. You must have at least 1 of the targeted items to score points for a goal. For example, you must have at least",
+      "brown wetland bird powers you wish, right to left. End of the Round 1. Remove all action cubes from your player mat. 2. Place 1 action cube to mark your score on the end-of-round goal: • If playing with majority goals and players tie, add the values of the tied and next places and divide by number of players, rounded down. 4th place scores 0. • If playing with points-per-item goals, 5 is the maximum, 0 is the minimum (you must still place a cube there, even if on 0). 3. Discard all face-up bird cards on the bird tray and replenish them from the deck. 4. Rotate the first player token clockwise. End Game Scoring After round 4, score as follows: 1. Points listed on each bird card you played 2. Points listed on each of your completed bonus card 3. Points for end-of-round goals 4. 1 point per: • egg on bird cards • food token cached on a bird card • card tucked under a bird card The player with the most points wins. If tied, whoever has the most food tokens wins. If still tied, victory is shared. MANAGING THE BIRDFEEDER If the birdfeeder tray is ever empty, throw all 5 dice back in. If the dice in the tray all show the same face (including if there is only 1 die) and you are about to gain food for any reason, you may first throw all 5 dice back into the birdfeeder. ( counts as its own unique face.) WS_Appendix_r17.indd 2WS_Appendix_r17.indd 2 6/14/21 9:53 PM6/14/21 9:53 PM"
+    ]
   },
   {
     "q": "How do I set up the birdfeeder?",
@@ -14,28 +19,41 @@
       "c0088",
       "c0001"
     ],
-    "answerable": true
+    "answerable": true,
+    "relevant_text": [
+      "2 Global Components 1. Bird cards. Shuffle the bird cards into a deck. Place it next to the bird tray, then populate the tray with 3 face-up bird cards. 2. Supply. Place all food and egg tokens in the supply. These are tokens accessible to all players. 3. Birdfeeder. Toss the food dice into the birdfeeder dice tower. 4. Goal board. Choose which type of goals you will play with, and place the goal board on the table with that side facing up: i. Green: For a game with more direct competition for goals, choose the side that has 1st, 2nd, and 3rd place for each goal. This is the default. ii. Blue: For a game with less direct competition between players, choose the side that awards 1 point for each targeted item. This is good for new players. 5. Goal tiles. Shuffle the goal tiles without looking at them (they’re double-sided). Place 1 goal tile (random side up) on each of the four blank spaces on the goal board. Return extra goal tiles to the box. 6. Bonus cards. Shuffle the bonus cards into a deck and place it on the table. Setup Player Setup A. Each player receives: • 1 player mat • 8 action cubes of one color • 2 random bonus cards • 5 random bird cards • 5 food tokens (1 of each type: , , , , ) You may keep your hand of cards private or public throughout the game. B. Keep up to 5 bird cards and discard the others. For each bird card you keep, you must discard 1 food token. You will probably want to keep food tokens shown in the upper left of the bird cards you selected. For example, you might keep 2 bird cards and 3 food,",
+      "2 QUICK REFERENCE Setup GLOBAL SETUP 1. BIRD CARDS: Shuffle the deck of bird cards and populate the bird tray with 3 face-up cards. 2. SUPPLY: Place food and egg tokens in the supply. 3. BIRDFEEDER: Toss food dice into birdfeeder. 4. GOAL BOARD: Lay out the goal board, desired side up. 5. GOAL TILES: Lay 4 random goal tiles on the goal board. 6. BONUS CARDS: Shuffle the bonus cards. Place the deck on the table. PLAYER SETUP 1. Give each player a player mat, 8 action cubes of one color, 2 random bonus cards, 5 bird cards, and 1 of each food token type. 2. Discard 1 food token per bird card you wish to keep. Discard the remaining bird cards. 3. Choose and discard 1 bonus card. 4. Choose a first player and give them the first-player token. Round Overview Starting with the first player and proceeding clockwise, choose a habitat on your player mat (all habitats are always available) and places an action cube on the leftmost exposed slot in that row to take 1 of the following 4 actions: 1. PLAY ONE BIRD A. Select 1 bird card from your hand to play. B. Discard the number of eggs from bird cards equal to the number of shown in the column where you want to/will place the bird. C. Discard the shown food tokens (if , then there is no food cost). Wild ( ) means you may use any food. You may spend any 2 food tokens to use them as any 1 food token. D. Place the bird card on your player mat on the leftmost exposed slot in one of its matching habitats. E. If the bird has a “when played” power, activate it (for that bird only). 2. GAIN FOOD A."
+    ]
   },
   {
     "q": "Can I play a bird in any habitat I want?",
     "relevant": [
       "c0002"
     ],
-    "answerable": true
+    "answerable": true,
+    "relevant_text": [
+      "them as any 1 food token. D. Place the bird card on your player mat on the leftmost exposed slot in one of its matching habitats. E. If the bird has a “when played” power, activate it (for that bird only). 2. GAIN FOOD A. Gain a number of food tokens equal to the number of shown on your leftmost exposed forest slot by removing the food dice from the birdfeeder and gaining the matching food tokens ( means you may take either one). B. If the leftmost exposed forest slot shows , you may discard 1 bird card from your hand to remove one additional die and take its corresponding food. C. Activate any brown forest bird powers you wish, right to left. 3. LAY EGGS A. Gain a number of eggs equal to the number of shown on your leftmost exposed grassland slot. Place them on bird cards (up to the birds’ egg limits; any excess is lost). B. If the leftmost exposed grassland slot shows , you may pay 1 food token to gain one additional egg. C. Activate any brown grassland bird powers you wish, right to left. 4. DRAW CARDS A. Draw bird cards equal to the number of shown on your leftmost exposed wetland slot. Draw from the face-up cards or the top of the bird deck. Do not replace the face-up cards until end of turn. B. If the leftmost exposed wetland slot shows , you may discard 1 egg to gain one additional card. C. Activate any brown wetland bird powers you wish, right to left. End of the Round 1. Remove all action cubes from your player mat. 2. Place 1 action cube to mark your score on the end-of-round goal: • If playing with majority goals and players tie, add"
+    ]
   },
   {
     "q": "What do I do when I draw bird cards?",
     "relevant": [
       "c0103"
     ],
-    "answerable": true
+    "answerable": true,
+    "relevant_text": [
+      "9 OPTION 4. Draw Bird Cards and Activate Wetland Bird Powers The cards available for you to draw are the 3 face-up cards on the bird tray and the top card of the bird deck. When you choose to draw cards, do the following: 1. Place an action cube in the leftmost exposed slot in the “draw cards” row on your player mat, and draw the number of cards shown there from either the face-up cards on the bird tray or the bird deck. There is no hand limit. 2. If the slot where you placed your action cube shows an egg-to-card bonus conversion, you may discard at most 1 egg from a bird on your mat to draw an additional card. This is optional. Remove 1 egg from one of your bird cards and return it to the egg supply. 3. Activate any brown powers on your wetland birds, from right to left. All powers are optional. End your turn by placing your action cube on the left side of the “draw cards” row. Managing the bird deck As you draw face-up cards, they are not immediately refilled. Instead, wait until the end of your turn before refilling empty spaces on the bird tray. If the face-down deck is ever emptied during the game, reshuffle all discarded bird cards to form a new deck. At the end of each round, discard any remaining face-up cards and replenish them with 3 new bird cards. The discard pile is kept face-up. Common Yellowthroat Geothlypis trichas This was one of the first American birds to be cataloged by Linnaeus, in 1766. 18cm 1 WHEN ACTIVATED: Draw 2 . If you do, discard 1 from your hand at the end of your turn. BirdCards_r20.indd 64BirdCards_r20.indd 64 6/15/21 7:24 AM6/15/21 7:24 AM Common Yellowthroat"
+    ]
   },
   {
     "q": "How many bonus cards do I keep during setup?",
     "relevant": [
       "c0001"
     ],
-    "answerable": true
+    "answerable": true,
+    "relevant_text": [
+      "2 QUICK REFERENCE Setup GLOBAL SETUP 1. BIRD CARDS: Shuffle the deck of bird cards and populate the bird tray with 3 face-up cards. 2. SUPPLY: Place food and egg tokens in the supply. 3. BIRDFEEDER: Toss food dice into birdfeeder. 4. GOAL BOARD: Lay out the goal board, desired side up. 5. GOAL TILES: Lay 4 random goal tiles on the goal board. 6. BONUS CARDS: Shuffle the bonus cards. Place the deck on the table. PLAYER SETUP 1. Give each player a player mat, 8 action cubes of one color, 2 random bonus cards, 5 bird cards, and 1 of each food token type. 2. Discard 1 food token per bird card you wish to keep. Discard the remaining bird cards. 3. Choose and discard 1 bonus card. 4. Choose a first player and give them the first-player token. Round Overview Starting with the first player and proceeding clockwise, choose a habitat on your player mat (all habitats are always available) and places an action cube on the leftmost exposed slot in that row to take 1 of the following 4 actions: 1. PLAY ONE BIRD A. Select 1 bird card from your hand to play. B. Discard the number of eggs from bird cards equal to the number of shown in the column where you want to/will place the bird. C. Discard the shown food tokens (if , then there is no food cost). Wild ( ) means you may use any food. You may spend any 2 food tokens to use them as any 1 food token. D. Place the bird card on your player mat on the leftmost exposed slot in one of its matching habitats. E. If the bird has a “when played” power, activate it (for that bird only). 2. GAIN FOOD A."
+    ]
   },
   {
     "q": "What is the egg limit on a bird?",
@@ -43,7 +61,11 @@
       "c0100",
       "c0012"
     ],
-    "answerable": true
+    "answerable": true,
+    "relevant_text": [
+      "8 OPTION 3. Lay Eggs and Activate Grassland Bird Powers Eggs are part of the cost of playing bird cards in columns 2 – 5. Also, each egg on the bird cards on your player mat is worth 1 point at the end of the game. When you choose to lay eggs, do the following: 1. Place an action cube in the leftmost exposed slot in the “lay eggs” row on your player mat and lay that number of eggs. To lay an egg, gain an egg token from the supply (color doesn’t matter) and place it on a bird card that has space for it, according to its egg limit. The egg will stay there for the rest of the game, unless discarded. You can lay eggs on any combination of birds (including all on 1 bird), but each bird has an egg limit. A bird’s egg limit is shown by the egg icons. A bird card can never hold more than this number of eggs.",
+      "8 Egg-Laying Powers IN GENERAL: Remember that each bird has an egg limit (see Action Option 3 in the rulebook). No power allows you to lay more eggs on a bird than its limit allows. nest symbols are wild and can be used as all of the nest types. If you have different powers that are looking for specific nests, a bird with a can be used with all of them, even within one turn. American Avocet Barrow’s Goldeneye Bronzed Cowbird Brown-Headed Cowbird Yellow-Billed Cuckoo ONCE BETWEEN TURNS: When another player takes the “lay eggs” action, lay 1 on another bird with a [specific type of] nest. These birds are all nest parasites in the wild: they lay eggs in other birds’ nests. Cowbirds don’t even build their own nests. When another player uses the action to lay eggs, you may lay 1 egg. You may do this only once between your turns, no matter how many other players lay eggs. These birds can lay eggs on star nests. Ash-Throated Flycatcher Bobolink Inca Dove Say’s Phoebe WHEN PLAYED: Lay 1 on each of your birds with a [nest type] nest. This power allows you to lay eggs on all of your birds that have a specific nest symbol (and all birds with a star nest symbol), including the newly played bird. Pileated Woodpecker Lazuli Bunting Western Meadowlark WHEN ACTIVATED: All players lay 1 on any 1 bird [with a specific nest]. You may lay 1 on 1 additional bird [of the same nest type]. This power allows you to lay an egg on 1 or 2 birds with a specific nest symbol (or a star). All other players can lay an egg on 1 bird with that nest symbol (or a star), if they have one. Baird’s Sparrow Cassin’s Sparrow"
+    ]
   },
   {
     "q": "How does the first player token move between rounds?",
@@ -52,7 +74,12 @@
       "c0107",
       "c0003"
     ],
-    "answerable": true
+    "answerable": true,
+    "relevant_text": [
+      "5 Round Structure When all players have placed all of their action cubes, the round is over. Follow these steps in order: 1. Remove all action cubes from your player mat. 2. Score the end-of-round goal for the round you just completed. 3. Discard all face-up bird cards on the bird tray and restock the bird tray with cards from the deck. 4. Rotate the first player token clockwise to the next player. Use 1 of your action cubes to mark your score on the end-of-round goal. As a result, you will have 1 fewer action cube to use each round: • Round 1: 8 turns per player • Round 2: 7 turns per player • Round 3: 6 turns per player • Round 4: 5 turns per player Game End and Scoring The game ends at the conclusion of Round 4. Use the scorepad to add together the following: • Points for each face-up bird card on your player mat (printed on the cards) • Points for each bonus card (printed on the cards) • Points for end-of-round goals (shown on goal board) • 1 point for each: » egg on a bird card » food token cached on a bird card » card tucked under a bird card The player who has the most points wins. In the case of a tie, the player with the most unused food tokens wins. If players are still tied, they share the victory. DESIGNER’S NOTE: Players have fewer actions as the game progresses, but the bird powers create powerful combinations as birds accumulate in each row of the player mats. Painted Bunting Passerina ciris Poachers sell these birds as pets, making it harder for wild populations to thrive. 23cm 5 WHEN PLAYED: Draw 2 bonus cards and keep 1. + +",
+      "11 When players have placed all their available action cubes (1 cube per turn), the round is over. At round end: 1. Remove all action cubes from your player mat. 2. Score the end-of-round goal for the round you just completed. 3. Discard all face-up bird cards on the bird tray and replenish them. 4. Rotate the first player token clockwise to the next player. Scoring End-of-Round Goals The end-of-round goals are based on how many birds or eggs you have in a given habitat or nest type. To indicate the points you score from that goal, each player must place an action cube on the goal board (even if you score 0 points). The board has 2 sides, each using a different scoring method. Green is the default, but blue is good for new players. Green: Majority of the targeted item This method uses the side of the goal board that has spaces for 1st, 2nd, and 3rd place. At the end of the round, count your quantity of the targeted item. Players compare their results and place their action cubes based on their rank order. If players tie, place both cubes on the tied place, and do not award the next place. At game end, you will add the points for that place and the next place(s), then divide by the number of players who tied and round down (4th place scores 0 points). For example, when using the goal that scores 5, 2, or 1 points, if two players tie for 1st place, each gets 3 points (5 + 2 divided by 2 players, rounded down). Do not award 2nd place to another player. You must have at least 1 of the targeted items to score points for a goal. For example, you must have at least",
+      "brown wetland bird powers you wish, right to left. End of the Round 1. Remove all action cubes from your player mat. 2. Place 1 action cube to mark your score on the end-of-round goal: • If playing with majority goals and players tie, add the values of the tied and next places and divide by number of players, rounded down. 4th place scores 0. • If playing with points-per-item goals, 5 is the maximum, 0 is the minimum (you must still place a cube there, even if on 0). 3. Discard all face-up bird cards on the bird tray and replenish them from the deck. 4. Rotate the first player token clockwise. End Game Scoring After round 4, score as follows: 1. Points listed on each bird card you played 2. Points listed on each of your completed bonus card 3. Points for end-of-round goals 4. 1 point per: • egg on bird cards • food token cached on a bird card • card tucked under a bird card The player with the most points wins. If tied, whoever has the most food tokens wins. If still tied, victory is shared. MANAGING THE BIRDFEEDER If the birdfeeder tray is ever empty, throw all 5 dice back in. If the dice in the tray all show the same face (including if there is only 1 die) and you are about to gain food for any reason, you may first throw all 5 dice back into the birdfeeder. ( counts as its own unique face.) WS_Appendix_r17.indd 2WS_Appendix_r17.indd 2 6/14/21 9:53 PM6/14/21 9:53 PM"
+    ]
   },
   {
     "q": "How is the winner decided at the end of the game?",
@@ -60,7 +87,11 @@
       "c0107",
       "c0108"
     ],
-    "answerable": true
+    "answerable": true,
+    "relevant_text": [
+      "11 When players have placed all their available action cubes (1 cube per turn), the round is over. At round end: 1. Remove all action cubes from your player mat. 2. Score the end-of-round goal for the round you just completed. 3. Discard all face-up bird cards on the bird tray and replenish them. 4. Rotate the first player token clockwise to the next player. Scoring End-of-Round Goals The end-of-round goals are based on how many birds or eggs you have in a given habitat or nest type. To indicate the points you score from that goal, each player must place an action cube on the goal board (even if you score 0 points). The board has 2 sides, each using a different scoring method. Green is the default, but blue is good for new players. Green: Majority of the targeted item This method uses the side of the goal board that has spaces for 1st, 2nd, and 3rd place. At the end of the round, count your quantity of the targeted item. Players compare their results and place their action cubes based on their rank order. If players tie, place both cubes on the tied place, and do not award the next place. At game end, you will add the points for that place and the next place(s), then divide by the number of players who tied and round down (4th place scores 0 points). For example, when using the goal that scores 5, 2, or 1 points, if two players tie for 1st place, each gets 3 points (5 + 2 divided by 2 players, rounded down). Do not award 2nd place to another player. You must have at least 1 of the targeted items to score points for a goal. For example, you must have at least",
+      "place, each gets 3 points (5 + 2 divided by 2 players, rounded down). Do not award 2nd place to another player. You must have at least 1 of the targeted items to score points for a goal. For example, you must have at least 1 grassland bird to score points for the “most birds in the grassland habitat” goal. If you finish in 4th or 5th place, you must still place an action cube on the goal board in the space marked 0. Blue: One point per targeted item This method uses the side of the goal board that has spaces labeled 5-4-3-2-1-0 next to the space for each goal. At the end of the round, count your quantity of the targeted item. Score 1 point per item, with a maximum of 5 points. Use an action cube to mark your score on the goal. If you do not have any of that item, you must still place an action cube on the goal board in the space marked 0. END OF THE ROUND bonus cards As described in Setup, each player starts the game with 1 bonus card (selected from 2 random cards). There are also several birds in the deck that allow you to gain additional bonus cards. At end of game, score the bonus cards you have in your hand. See the Appendix for more information about scoring each type of bonus card. ROUND 1ROUND 2ROUND 3ROUND 4 MOST1st PLACE 1st PLACE 1st PLACE 1st PLACE 2nd PLACE 2nd PLACE 2nd PLACE 2nd PLACE 3rd PLACE 3rd PLACE 3rd PLACE 3rd PLACE MOSTMOSTMOST 4 5 6 7 1 2 3 4 0 1 2 3 0 0 0 0 WS_GoalMat_r2.indd 1 8/2/18 6:50 PM ROUND 1ROUND 2ROUND 3ROUND 4 1 each1 each1 each1 each MAX MAX"
+    ]
   },
   {
     "q": "What is the Duet map?",
@@ -68,7 +99,11 @@
       "c0053",
       "c0067"
     ],
-    "answerable": true
+    "answerable": true,
+    "relevant_text": [
+      "10 Duet Mode Gameplay When you play a bird onto your player mat, place the Duet token from that spot onto an unclaimed space on the Duet map that matches the bird you played. “Matching the bird” means: • The space must be in the region of the Duet map that corresponds to the habitat where you played the bird. • The symbol on the space must correspond to the bird you played: » To use a nest space, the bird must have that nest symbol. - Star nests are wild and can match any nest symbol on the Duet map. » T o use a food space, you must have spent that food. - If you use the 2-for-1 food rule to play a bird, treat it as if you converted those two foods into the food you needed for the bird. Thus, you can use a space for the required food, not the 2 foods you spent to get that required food. » The 50+ cm and <50 cm spaces correspond to the bird’s wingspan. • Note that it is not enough for a bird to have the correct habitat or food on the card; you must have played the bird in that habitat and used that food when playing the bird. Do I place a token? • Place a token on the map whenever you play a bird. This will usually occur through taking the “PLAY A BIRD” action, but bird powers that allow you to play a bird (e.g., “play another bird in this habitat”) also count. • Remember, the Duet tokens on each space of your player mat are only there as a reminder to use them, not a requirement for play. For example: » Bird powers that move a bird do not cause a",
+      "Duet tokens on the Duet map. Score 1 point for each Duet token in your largest contiguous group. • Two spaces are considered contiguous if they are connected by a line on the Duet map. ROUND 4ROUND 3ROUND 2ROUND 1 2 pt 0 pt 0 pt 0 pt 0 pt 3 pt 4 pt 5 pt GAME END: Score 1 point for each token in your largest contiguous group. beak pointing right beak pointing right beak pointing left beak pointing left <50cm <50cm50+cm 50+cm If you place your token here instead, you may remove it on your turn to reset the birdfeeder or the bird tray. most most most most ROUND 1 WS_AsiaGoalMat_r3.indd 1WS_AsiaGoalMat_r3.indd 1 3/24/22 4:09 PM3/24/22 4:09 PM A in any one horizontal row A on A on bonus spaces fewest A not on edge of map ROUND 4ROUND 3ROUND 2ROUND 1 2 pt 0 pt 0 pt 0 pt 0 pt 3 pt 4 pt 5 pt GAME END: Score 1 point for each token in your largest contiguous group. beak pointing right beak pointing right beak pointing left beak pointing left <50cm <50cm50+cm 50+cm If you place your token here instead, you may remove it on your turn to reset the birdfeeder or the bird tray. most most most most ROUND 1 WS_AsiaGoalMat_r3.indd 1WS_AsiaGoalMat_r3.indd 1 3/24/22 4:09 PM3/24/22 4:09 PM Example: In the board snippet to the left, the white player receives 4 points and the black player receives 3 points. WS_Asia_Rulebook_r9.indd 14WS_Asia_Rulebook_r9.indd 14 4/4/22 7:04 PM4/4/22 7:04 PM"
+    ]
   },
   {
     "q": "How is Duet mode different from the base game?",
@@ -76,7 +111,11 @@
       "c0033",
       "c0053"
     ],
-    "answerable": true
+    "answerable": true,
+    "relevant_text": [
+      "blue boxes); there are some new bird powers described in the Appendix. The setup shown is for the new Duet mode. A standard game would have the goal mat from the original game at (5), and no Duet tokens placed on the player mats. 6 WS_Asia_Rulebook_r9.indd 2WS_Asia_Rulebook_r9.indd 2 4/4/22 7:01 PM4/4/22 7:01 PM",
+      "10 Duet Mode Gameplay When you play a bird onto your player mat, place the Duet token from that spot onto an unclaimed space on the Duet map that matches the bird you played. “Matching the bird” means: • The space must be in the region of the Duet map that corresponds to the habitat where you played the bird. • The symbol on the space must correspond to the bird you played: » To use a nest space, the bird must have that nest symbol. - Star nests are wild and can match any nest symbol on the Duet map. » T o use a food space, you must have spent that food. - If you use the 2-for-1 food rule to play a bird, treat it as if you converted those two foods into the food you needed for the bird. Thus, you can use a space for the required food, not the 2 foods you spent to get that required food. » The 50+ cm and <50 cm spaces correspond to the bird’s wingspan. • Note that it is not enough for a bird to have the correct habitat or food on the card; you must have played the bird in that habitat and used that food when playing the bird. Do I place a token? • Place a token on the map whenever you play a bird. This will usually occur through taking the “PLAY A BIRD” action, but bird powers that allow you to play a bird (e.g., “play another bird in this habitat”) also count. • Remember, the Duet tokens on each space of your player mat are only there as a reminder to use them, not a requirement for play. For example: » Bird powers that move a bird do not cause a"
+    ]
   },
   {
     "q": "How do I set up the Asia expansion?",
@@ -84,21 +123,31 @@
       "c0031",
       "c0035"
     ],
-    "answerable": true
+    "answerable": true,
+    "relevant_text": [
+      "2 Global Components 1. Bird cards. Shuffle the bird cards into a deck. Place it next to the bird tray, then populate the tray with 3 face-up bird cards. 2. Supply. Place all food tokens and egg miniatures in the supply. These are accessible to all players. 3. Birdfeeder. Roll the food dice onto the birdfeeder board. 4. Bonus cards. Shuffle the bonus cards into a deck and place it on the table. 5. Goal tiles. Shuffle the goal tiles without looking at them (they’re double-sided). Place 1 goal tile (either side; see page 1 5) on each of the 4 blank spaces on the goal board. Return extra goal tiles to the box. Setup Player Setup A. Each player receives: • 1 player mat (use the inside section of the mat as shown in these images; the exterior section is only used when playing with the Oceania Expansion) • 8 action cubes of one color • 2 random bonus cards • 5 random bird cards • 5 food tokens (1 of each type: , , , , ) You may keep your hand of cards private or public throughout the game. B. You have 1 0 resources: 5 cards and 5 food. You must discard 5 of them and keep 5 (any combination). You will probably want to keep food tokens shown in the upper left of the bird cards you selected. For example, you might keep 2 bird cards and 3 food, or you might keep 4 bird cards and 1 food. C. Choose 1 bonus card to keep and discard the other. You may look at your bonus cards while selecting which birds to keep (and vice versa). D. Randomly select the first player and give them the first-player token. Note: If you are using the Swift",
+      "for a 6-7 player game). Split the deck in half, place it next to a bird tray for each group, then populate each tray with 3 face-up bird cards. 3. Supply. Place all food tokens and egg miniatures in the supply. These are accessible to all players. 4. Birdfeeders. Each group has their own birdfeeder populated with 5 dice. a. If playing with the Oceania Expansion, each group uses 2 nectar dice and 3 regular food dice. 5. Bonus cards. Shuffle all available bonus cards (except the Historian; see page 1 6) into a single deck and place it on the table for both groups to share. 6. Goal tiles. Use one set of goal tiles for the entire table (use standard goal tiles, not the Duet goal tiles with red corners). Shuffle the goal tiles without looking at them (they’re double-sided). Place 1 goal tile (random side up) on each of the 4 blank spaces on the new Flock mode goal board (on the back side of the Duet map). Return extra goal tiles to the box. Player Setup Proceed with all standard player setup steps as described on page 2. Then rotate the turn-order dial so the star points to the player with the first-player token (purple in this 7-player example). Group Notes • Other than assigning players to a certain set of dice and cards, the groups do not have any meaning in the game. • Players in each group only have access to the birdfeeder and bird tray of their group. • If a bird power refers to “any die,” you only have access to your group’s dice. 7 7 1,3 2,4 WS_Asia_Rulebook_r9.indd 3WS_Asia_Rulebook_r9.indd 3 4/4/22 7:01 PM4/4/22 7:01 PM"
+    ]
   },
   {
     "q": "What does a white power on a bird card mean?",
     "relevant": [
       "c0106"
     ],
-    "answerable": true
+    "answerable": true,
+    "relevant_text": [
+      "from the supply on this bird. BirdCards_r20.indd 7BirdCards_r20.indd 7 6/15/21 7:19 AM6/15/21 7:19 AM Eastern Kingbird Tyrannus tyrannus The kingbird displays its orange crown while defending its territory. 38cm 2 ONCE BETWEEN TURNS: When another player plays a bird in their , gain 1 from the supply. / BirdCards_r20.indd 71BirdCards_r20.indd 71 6/15/21 7:24 AM6/15/21 7:24 AM Mountain Bluebird Sialia currucoides These birds can be found from prairies up to alpine zones above treeline. 36cm 4 WHEN PLAYED: Play an additional bird in your . Pay its normal cost. + BirdCards_r20.indd 104BirdCards_r20.indd 104 6/15/21 7:28 AM6/15/21 7:28 AM American White Pelican Pelecanus erythrorhynchos Pelicans work together to herd fish and then scoop them up. 274cm 5 WHEN ACTIVATED: Discard a to tuck 2 from the deck behind this bird. + BirdCards_r20.indd 10BirdCards_r20.indd 10 6/15/21 7:19 AM6/15/21 7:19 AM WHEN PLAYED (white): These powers may be activated only when a bird is played (never again after you play the bird). The Appendix contains descriptions of all bird powers. Bird powers are always optional. For example, if you do not want to spend a card by tucking it under a flocking bird, you do not have to do so. WS_Rulebook_r24.indd 10WS_Rulebook_r24.indd 10 3/11/23 10:47 PM3/11/23 10:47 PM"
+    ]
   },
   {
     "q": "When do pink powers trigger?",
     "relevant": [
       "c0105"
     ],
-    "answerable": true
+    "answerable": true,
+    "relevant_text": [
+      "10 Powers on bird cards fall into 3 categories: WHEN ACTIVATED (brown): These powers may be activated from right to left whenever you use the corresponding habitat. BIRD POWERS This indicates that the bird’s power involves tucking other bird cards under it to represent the creation of a flock. Each of these tucked cards are worth 1 VP at end of game. ONCE BETWEEN TURNS (pink): These powers may be triggered on opponents’ turns. You can only use a pink power once between each of your own turns (if an opponent triggers it). We recommend telling other players what the power is, and what activates it. Players should help each other notice when a bird with a pink power should be activated. Cache: This refers to putting a food token on a bird (the bird is saving the food for later). You cannot spend that food token; instead, it’s worth 1 VP at end of game. If you run out of food tokens, you can cache cards instead (use discarded cards). Wingspan: The wingspan of each bird is used for comparison for some bird abilities. This indicates that the bird is a predator. American Kestrel Falco sparverius Kestrels track rodents by their urine and will cache surplus kills for later. 56cm 5 + WHEN ACTIVATED: Roll all dice not in birdfeeder. If any are , cache 1"
+    ]
   },
   {
     "q": "Can a bird power let me go over my egg limit?",
@@ -106,14 +155,21 @@
       "c0012",
       "c0061"
     ],
-    "answerable": true
+    "answerable": true,
+    "relevant_text": [
+      "8 Egg-Laying Powers IN GENERAL: Remember that each bird has an egg limit (see Action Option 3 in the rulebook). No power allows you to lay more eggs on a bird than its limit allows. nest symbols are wild and can be used as all of the nest types. If you have different powers that are looking for specific nests, a bird with a can be used with all of them, even within one turn. American Avocet Barrow’s Goldeneye Bronzed Cowbird Brown-Headed Cowbird Yellow-Billed Cuckoo ONCE BETWEEN TURNS: When another player takes the “lay eggs” action, lay 1 on another bird with a [specific type of] nest. These birds are all nest parasites in the wild: they lay eggs in other birds’ nests. Cowbirds don’t even build their own nests. When another player uses the action to lay eggs, you may lay 1 egg. You may do this only once between your turns, no matter how many other players lay eggs. These birds can lay eggs on star nests. Ash-Throated Flycatcher Bobolink Inca Dove Say’s Phoebe WHEN PLAYED: Lay 1 on each of your birds with a [nest type] nest. This power allows you to lay eggs on all of your birds that have a specific nest symbol (and all birds with a star nest symbol), including the newly played bird. Pileated Woodpecker Lazuli Bunting Western Meadowlark WHEN ACTIVATED: All players lay 1 on any 1 bird [with a specific nest]. You may lay 1 on 1 additional bird [of the same nest type]. This power allows you to lay an egg on 1 or 2 birds with a specific nest symbol (or a star). All other players can lay an egg on 1 bird with that nest symbol (or a star), if they have one. Baird’s Sparrow Cassin’s Sparrow",
+      "5 ONCE BETWEEN TURNS: When another player takes the “lay eggs” action, lay 1 on another bird with wingspan less than 30 cm. You may go 2 over its egg limit while using this power. + WS_Asia_BirdCards_r8.indd 83WS_Asia_BirdCards_r8.indd 83 3/28/22 9:06 AM3/28/22 9:06 AM A White-Headed Duck Oxyura leucocephala Droughts and agriculture have dried up the lakes that were this endangered bird’s breeding habitat. 66cm 4 WHEN PLAYED: Draw 3 new bonus cards and keep 1. + WS_Asia_BirdCards_r8.indd 86WS_Asia_BirdCards_r8.indd 86 3/28/22 9:07 AM3/28/22 9:07 AM A Baya Weaver Ploceus philippinus These gregarious birds may weave up to 60 nests in a single tree. 27cm 3 WHEN ACTIVATED: Tuck up to 3 from your hand behind this bird. If you tuck at least 1 , lay 1 on this bird. + + WS_Asia_BirdCards_r8.indd 4WS_Asia_BirdCards_r8.indd 4 3/28/22 8:59 AM3/28/22 8:59 AM WHEN PLAYED (white): These powers may be activated only when a bird is played (never again after you play the bird). The Appendix from the base game and from each expansion contains descriptions of all bird powers. Bird powers are always optional. For example, if you do not want to spend a card by tucking it under a flocking bird, you do not have to do so. WS_Asia_Rulebook_r9.indd 12WS_Asia_Rulebook_r9.indd 12 4/4/22 7:04 PM4/4/22 7:04 PM"
+    ]
   },
   {
     "q": "How does the Automa take its turn?",
     "relevant": [
       "c0077"
     ],
-    "answerable": true
+    "answerable": true,
+    "relevant_text": [
+      "3 The Automa’s Turn On the Automa´s turn, draw a single card from the Automa deck and place it face up on top of any previously revealed Automa cards, lined up against the arrow on the Current Round Tracker card. The arrow points to the section you will use for the current round. Compare each icon in that section to the rules on this page and resolve the action. The other three sections are ignored. Draw Cards: Discard ALL 3 face-up cards from the bird tray. Draw 1 card from the face-down bird deck and place it face-down in the Automa’s supply. Face-down birds are worth 3, 4, or 5 points at the end of the game based on the difficulty level you chose (4 points for normal difficulty). Play a Bird: From the 3 face-up cards on the bird tray, pick up ALL that meet the requirement of the Automa’s bonus card. Of these cards, the Automa will keep 1 card with the highest point value. If there are multiple cards with the same highest point value, it makes no difference which one the Automa keeps. Place it face-up in the Automa´s supply and discard the rest. Face-up birds are worth their stated point value at the end of the game. For example, if the Automa´s bonus card is Cartographer, which awards points for birds with geography terms in their names, it would pick up all bird cards that featured these names, place the one with the highest point value face-up in its supply, and discard the rest. If NO birds meet the requirement, draw 1 face-down bird card and place it face-down in the Automa’s supply. Face-down birds are worth 3, 4, or 5 points at the end of the game based on the difficulty level you chose"
+    ]
   },
   {
     "q": "What does the Automa do with bird cards?",
@@ -121,14 +177,21 @@
       "c0074",
       "c0078"
     ],
-    "answerable": true
+    "answerable": true,
+    "relevant_text": [
+      "shown. • Take all bird cards that match bonus card. Automa keeps highest point value card, face- up and discards any others. • If none match, Automa draws 1 and keeps it, face-down. • If all dice show the same face, reroll all. • Follow key, left to right, match first face type in birdfeeder and remove ALL of those dice. WS_AutomaCards2Side_r3.indd 7 7/9/18 2:33 PM WS_AutomaCards_r2.indd 12 7/10/18 6:04 PM in in in with total 1 3 5 0 sets of ROUND 2 END-OF-ROUND GOALS in WS_AutomaCards2Side_r3.indd 4 7/9/18 2:33 PM ROUND 1ROUND 3 ROUND 2ROUND 4 ACTIVATE ALL PINK POWERS WS_AutomaCards_r2.indd 4 7/10/18 6:04 PM ROUND 1 END-OF-ROUND GOALS in in in with total sets of in 0 1 2 -1 WS_AutomaCards2Side_r3.indd 3 7/9/18 2:33 PM",
+      "and discard the rest. If NO birds meet the requirement, draw 1 face-down bird card and place it face-down in the Automa’s supply. Face-down birds are worth 3, 4, or 5 points at the end of the game based on the difficulty level you chose (4 points for normal difficulty). Lay Eggs: For each egg icon in the section for the current round, give the Automa 1 egg token from the supply. Gain Food: If all dice in the birdfeeder show the same face, remove the remaining dice and toss all 5 dice into the top of the birdfeeder to refill it. Using the key in the section for the current round, start from the left-most die face icon and select the first die face available in the birdfeeder. Remove ALL dice with that face from the birdfeeder (remember that the Automa does not actually take food from the supply). Place End-of-Round cube: Place 1 of the Automa’s action cubes on the current round´s goal tile of the goal board. Remove End-of-Round cube: Remove 1 of the Automa’s action cubes from the current round´s goal tile and return it to the Automa’s supply. If there are no cubes on the tile, ignore this action. Activate pink powers: Activate ALL pink powers of bird cards on your player mat (the Automa does nothing). DESIGNER’S NOTE: The first two actions described below, Draw Cards and Play a Bird, have the Automa take a bird card and discard other bird cards. Each action, however, uses a different method of selection. DESIGNER’S NOTE: Don’t be concerned that the Automa collects birds and eggs faster than you can. The Automa’s eggs compete against the eggs, tucked cards, and cached food that you will gather. Similarly, the Automa’s birds need to account for the additional points"
+    ]
   },
   {
     "q": "How do I get more eggs onto my birds?",
     "relevant": [
       "c0100"
     ],
-    "answerable": true
+    "answerable": true,
+    "relevant_text": [
+      "8 OPTION 3. Lay Eggs and Activate Grassland Bird Powers Eggs are part of the cost of playing bird cards in columns 2 – 5. Also, each egg on the bird cards on your player mat is worth 1 point at the end of the game. When you choose to lay eggs, do the following: 1. Place an action cube in the leftmost exposed slot in the “lay eggs” row on your player mat and lay that number of eggs. To lay an egg, gain an egg token from the supply (color doesn’t matter) and place it on a bird card that has space for it, according to its egg limit. The egg will stay there for the rest of the game, unless discarded. You can lay eggs on any combination of birds (including all on 1 bird), but each bird has an egg limit. A bird’s egg limit is shown by the egg icons. A bird card can never hold more than this number of eggs."
+    ]
   },
   {
     "q": "What do I do when my turn comes around?",
@@ -136,40 +199,54 @@
       "c0092",
       "c0097"
     ],
-    "answerable": true
+    "answerable": true,
+    "relevant_text": [
+      "4 Wingspan is played over 4 rounds. During each round, players take turns—proceeding clockwise—until each player has used all of their available action cubes. Turn Structure On your turn, you will take 1 of 4 actions, as shown on the left side of your player mat: Play a bird from your hand Gain food and activate forest bird powers Lay eggs and activate grassland bird powers Draw bird cards and activate wetland bird powers To place a bird from your hand onto a habitat, place an action cube on the Play a Bird spot above where you will play the bird. Pay the bird’s food and egg cost, then place the bird on your mat, only triggering that bird’s white “when played” power (if any). The Gain Food, Lay Eggs, and Draw Bird Cards actions follow the same 3-step process (numbers noted on player mat image, below): 1. Choose a habitat on your player mat and place an action cube on the leftmost exposed slot in that row. Gain the benefit of that slot. 2. Move your action cube from right to left, activating any birds with a brown “WHEN ACTIVATED” power in that row. Each power is optional. 3. When the action cube reaches the far left, leave it there. Your turn is over. OVERVIEW DESIGNER’S NOTE: Your first few turns will be very simple as you work to attract some birds to your wildlife preserves. You may even select the same action multiple times, which is absolutely allowed! More detailed descriptions of the actions are found on pages 6-9. Burrowing Owl Athene cunicularia These owls often use old prairie dog burrows for their underground nests. 53cm 5 + WHEN ACTIVATED: Roll all dice not in birdfeeder. If any are , cache 1",
+      "THE FOUR ACTIONS habitat food Designer’s Note: These food types are very generalized. For example, the symbol for invertebrates is a caterpillar, but some invertebrate-eaters specialize in flying or swimming insects instead (or shellfish). no food: A crossed-out circle means a bird does not have a food cost. Wild: If a bird’s food requirement includes a wild icon, you can use any of the 5 types of food for it. Or: This icon in bird costs and other places in Wingspan means “or” (e.g., pay 1 fish or 1 fruit). Each turn, you will take 1 action. This section describes each action in more detail. = If multiple habitat symbols are shown on the bird card, you can choose which habitat (row) to place it in. Your player mat limits you to a maximum of 5 birds in each habitat. 4. If the bird has a power that reads, “WHEN PLAYED,” you may use that power. Other powers (in brown and pink) are not used when the bird is played. Playing a bird is the only action that does not activate a row of birds. When playing birds, you may spend any 2 food tokens as if they are any 1 food token. This exchange cannot be used during other parts of the game. For example, if you need 1 fish, you could use any other 2 food tokens instead. forest grassland wetland / WS_Rulebook_r24.indd 6WS_Rulebook_r24.indd 6 3/11/23 10:45 PM3/11/23 10:45 PM"
+    ]
   },
   {
     "q": "Where am I allowed to put a new bird?",
     "relevant": [
       "c0002"
     ],
-    "answerable": true
+    "answerable": true,
+    "relevant_text": [
+      "them as any 1 food token. D. Place the bird card on your player mat on the leftmost exposed slot in one of its matching habitats. E. If the bird has a “when played” power, activate it (for that bird only). 2. GAIN FOOD A. Gain a number of food tokens equal to the number of shown on your leftmost exposed forest slot by removing the food dice from the birdfeeder and gaining the matching food tokens ( means you may take either one). B. If the leftmost exposed forest slot shows , you may discard 1 bird card from your hand to remove one additional die and take its corresponding food. C. Activate any brown forest bird powers you wish, right to left. 3. LAY EGGS A. Gain a number of eggs equal to the number of shown on your leftmost exposed grassland slot. Place them on bird cards (up to the birds’ egg limits; any excess is lost). B. If the leftmost exposed grassland slot shows , you may pay 1 food token to gain one additional egg. C. Activate any brown grassland bird powers you wish, right to left. 4. DRAW CARDS A. Draw bird cards equal to the number of shown on your leftmost exposed wetland slot. Draw from the face-up cards or the top of the bird deck. Do not replace the face-up cards until end of turn. B. If the leftmost exposed wetland slot shows , you may discard 1 egg to gain one additional card. C. Activate any brown wetland bird powers you wish, right to left. End of the Round 1. Remove all action cubes from your player mat. 2. Place 1 action cube to mark your score on the end-of-round goal: • If playing with majority goals and players tie, add"
+    ]
   },
   {
     "q": "Who designed Wingspan?",
     "relevant": [],
-    "answerable": false
+    "answerable": false,
+    "relevant_text": []
   },
   {
     "q": "How much does the Wingspan box cost?",
     "relevant": [],
-    "answerable": false
+    "answerable": false,
+    "relevant_text": []
   },
   {
     "q": "Can I play Wingspan with eight players?",
     "relevant": [
       "c0034"
     ],
-    "answerable": true
+    "answerable": true,
+    "relevant_text": [
+      "3 Flock Mode (6-7 Players) This expansion enables 6- and 7-player games (Flock mode) when combined with the base game. Plan for a Flock mode game to last about 2 hours on your first try—longer if there are inexperienced players in your group. Overview Flock mode requires 2 simultaneous active players to speed up gameplay. You are still competing as individuals, just as you do in the base game. You will be assigned to a group that has its own bird tray and birdfeeder, and you will only use that group’s resources throughout the game. You will interact across groups in other ways, though: the whole table shares end-of-round goals, pink “Once Between Turns” powers, and any bird powers that affect other players. Setup Split the players into 2 groups at the same table (3+3 for a 6-player game or 3+4 for a 7-player game). These groups remain fixed for the entire game. Replace all Global Components setup steps with the following: 1. Turn-order dial. Place the turn-order dial in the middle of the table. The dial has two pieces; make sure that both pieces have the correct side facing up (6 or 7 players). Distribute the player action cubes to players around the table in exactly the same order as the colors on the dial (players may want to sit accordingly if they have a favorite color). 2. Bird cards. Shuffle the bird cards into a deck; you will need to combine bird cards from the base game and/or another expansion to have enough for a 6-7 player game). Split the deck in half, place it next to a bird tray for each group, then populate each tray with 3 face-up bird cards. 3. Supply. Place all food tokens and egg miniatures in the supply. These are accessible to"
+    ]
   },
   {
     "q": "What is the capital of France?",
     "relevant": [],
-    "answerable": false
+    "answerable": false,
+    "relevant_text": []
   },
   {
     "q": "How do I play Catan?",
     "relevant": [],
-    "answerable": false
+    "answerable": false,
+    "relevant_text": []
   }
 ]
