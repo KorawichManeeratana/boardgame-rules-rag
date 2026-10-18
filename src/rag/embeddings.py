@@ -10,12 +10,26 @@ Two rules this module exists to enforce:
 from __future__ import annotations
 
 import math
+import random
+import sys
+import time
 
 from openai import OpenAI
 
 from . import config
 
 _client: OpenAI | None = None
+
+MAX_ATTEMPTS = 5
+BASE_DELAY = 2.0   # seconds; doubles each attempt
+
+# Batch by total SIZE, not by item count. A fixed count makes the payload
+# scale with chunk length, so the chunking sweep was quietly sending bigger
+# and bigger requests until the proxy refused: 600-word chunks x 64 is about
+# 44k tokens in one call, and that is the only config that failed. A word
+# budget keeps every request the same size whatever the chunking.
+MAX_WORDS_PER_REQUEST = 6000
+MAX_ITEMS_PER_REQUEST = 64
 
 
 def client() -> OpenAI:
@@ -26,17 +40,85 @@ def client() -> OpenAI:
     return _client
 
 
-def embed(texts: list[str], batch_size: int = 64) -> list[list[float]]:
-    """Embed a list of texts, preserving order."""
+def _embed_batch(batch: list[str]) -> list[list[float]]:
+    """One API call, retried on transient failures.
+
+    The class proxy intermittently returns 500 / connection errors under
+    load. A long ingest or an evaluation sweep makes hundreds of calls, so
+    without a retry a single blip throws away all the work before it.
+    """
+    for attempt in range(1, MAX_ATTEMPTS + 1):
+        try:
+            resp = client().embeddings.create(model=config.EMBED_MODEL, input=batch)
+            break
+        except Exception as exc:
+            if attempt == MAX_ATTEMPTS:
+                raise
+            # Jitter so parallel runs do not retry in lockstep.
+            delay = BASE_DELAY * (2 ** (attempt - 1)) * (1 + random.random() * 0.1)
+            print(f"    embedding call failed ({type(exc).__name__}); "
+                  f"retry {attempt}/{MAX_ATTEMPTS - 1} in {delay:.0f}s",
+                  file=sys.stderr, flush=True)
+            time.sleep(delay)
+
+    vectors = []
+    for i, _ in enumerate(batch):
+        vec = resp.data[i].embedding  # data[i] <-> batch[i]
+        if len(vec) != config.EMBED_DIM:
+            raise ValueError(f"expected {config.EMBED_DIM}-dim vector, got {len(vec)}")
+        vectors.append(vec)
+    return vectors
+
+
+def batches(texts: list[str],
+            max_words: int = MAX_WORDS_PER_REQUEST,
+            max_items: int = MAX_ITEMS_PER_REQUEST) -> list[list[str]]:
+    """Split into requests small enough for the proxy, by words and by count.
+
+    A single text over the budget still gets its own request -- better to let
+    the server reject that one item than to silently drop it here.
+    """
+    out: list[list[str]] = []
+    current: list[str] = []
+    words = 0
+    for text in texts:
+        n = len(text.split())
+        if current and (words + n > max_words or len(current) >= max_items):
+            out.append(current)
+            current, words = [], 0
+        current.append(text)
+        words += n
+    if current:
+        out.append(current)
+    return out
+
+
+def _embed_resilient(batch: list[str]) -> list[list[float]]:
+    """Embed one batch; on persistent failure, halve it and try again.
+
+    Retrying the same payload cannot help when the payload itself is what
+    the server rejects, so the last resort is a smaller one.
+    """
+    try:
+        return _embed_batch(batch)
+    except Exception:
+        if len(batch) == 1:
+            raise
+        mid = len(batch) // 2
+        print(f"    splitting a {len(batch)}-item batch and retrying",
+              file=sys.stderr, flush=True)
+        return _embed_resilient(batch[:mid]) + _embed_resilient(batch[mid:])
+
+
+def embed(texts: list[str], batch_size: int | None = None) -> list[list[float]]:
+    """Embed a list of texts, preserving order.
+
+    batch_size is accepted for compatibility but ignored: batching is by
+    payload size now, which is what the proxy actually cares about.
+    """
     vectors: list[list[float]] = []
-    for start in range(0, len(texts), batch_size):
-        batch = texts[start : start + batch_size]
-        resp = client().embeddings.create(model=config.EMBED_MODEL, input=batch)
-        for i, _ in enumerate(batch):
-            vec = resp.data[i].embedding  # data[i] <-> batch[i]
-            if len(vec) != config.EMBED_DIM:
-                raise ValueError(f"expected {config.EMBED_DIM}-dim vector, got {len(vec)}")
-            vectors.append(vec)
+    for batch in batches(texts):
+        vectors.extend(_embed_resilient(batch))
     return vectors
 
 

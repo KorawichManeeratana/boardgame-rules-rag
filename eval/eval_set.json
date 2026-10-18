@@ -2,9 +2,9 @@
   {
     "q": "What happens at the end of a round?",
     "relevant": [
-      "c0094",
-      "c0107",
-      "c0003"
+      "c0002",
+      "c0062",
+      "c0071"
     ],
     "answerable": true,
     "relevant_text": [
@@ -16,8 +16,8 @@
   {
     "q": "How do I set up the birdfeeder?",
     "relevant": [
-      "c0088",
-      "c0001"
+      "c0001",
+      "c0058"
     ],
     "answerable": true,
     "relevant_text": [
@@ -38,7 +38,7 @@
   {
     "q": "What do I do when I draw bird cards?",
     "relevant": [
-      "c0103"
+      "c0069"
     ],
     "answerable": true,
     "relevant_text": [
@@ -58,8 +58,8 @@
   {
     "q": "What is the egg limit on a bird?",
     "relevant": [
-      "c0100",
-      "c0012"
+      "c0009",
+      "c0067"
     ],
     "answerable": true,
     "relevant_text": [
@@ -70,9 +70,9 @@
   {
     "q": "How does the first player token move between rounds?",
     "relevant": [
-      "c0094",
-      "c0107",
-      "c0003"
+      "c0002",
+      "c0062",
+      "c0071"
     ],
     "answerable": true,
     "relevant_text": [
@@ -84,8 +84,8 @@
   {
     "q": "How is the winner decided at the end of the game?",
     "relevant": [
-      "c0107",
-      "c0108"
+      "c0071",
+      "c0072"
     ],
     "answerable": true,
     "relevant_text": [
@@ -96,8 +96,8 @@
   {
     "q": "What is the Duet map?",
     "relevant": [
-      "c0053",
-      "c0067"
+      "c0035",
+      "c0045"
     ],
     "answerable": true,
     "relevant_text": [
@@ -108,8 +108,8 @@
   {
     "q": "How is Duet mode different from the base game?",
     "relevant": [
-      "c0033",
-      "c0053"
+      "c0020",
+      "c0035"
     ],
     "answerable": true,
     "relevant_text": [
@@ -120,8 +120,8 @@
   {
     "q": "How do I set up the Asia expansion?",
     "relevant": [
-      "c0031",
-      "c0035"
+      "c0019",
+      "c0022"
     ],
     "answerable": true,
     "relevant_text": [
@@ -132,7 +132,7 @@
   {
     "q": "What does a white power on a bird card mean?",
     "relevant": [
-      "c0106"
+      "c0070"
     ],
     "answerable": true,
     "relevant_text": [
@@ -142,7 +142,7 @@
   {
     "q": "When do pink powers trigger?",
     "relevant": [
-      "c0105"
+      "c0070"
     ],
     "answerable": true,
     "relevant_text": [
@@ -152,8 +152,8 @@
   {
     "q": "Can a bird power let me go over my egg limit?",
     "relevant": [
-      "c0012",
-      "c0061"
+      "c0009",
+      "c0041"
     ],
     "answerable": true,
     "relevant_text": [
@@ -164,7 +164,7 @@
   {
     "q": "How does the Automa take its turn?",
     "relevant": [
-      "c0077"
+      "c0051"
     ],
     "answerable": true,
     "relevant_text": [
@@ -174,8 +174,8 @@
   {
     "q": "What does the Automa do with bird cards?",
     "relevant": [
-      "c0074",
-      "c0078"
+      "c0049",
+      "c0052"
     ],
     "answerable": true,
     "relevant_text": [
@@ -186,7 +186,7 @@
   {
     "q": "How do I get more eggs onto my birds?",
     "relevant": [
-      "c0100"
+      "c0067"
     ],
     "answerable": true,
     "relevant_text": [
@@ -196,8 +196,8 @@
   {
     "q": "What do I do when my turn comes around?",
     "relevant": [
-      "c0092",
-      "c0097"
+      "c0061",
+      "c0064"
     ],
     "answerable": true,
     "relevant_text": [
@@ -230,7 +230,7 @@
   {
     "q": "Can I play Wingspan with eight players?",
     "relevant": [
-      "c0034"
+      "c0021"
     ],
     "answerable": true,
     "relevant_text": [

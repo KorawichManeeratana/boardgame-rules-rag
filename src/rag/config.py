@@ -14,8 +14,8 @@ TEMPERATURE = 0.0
 # --- retrieval defaults -----------------------------------------------------
 # These are the NAIVE defaults we start from. Day 4 tunes them against the
 # eval set and records a before/after number -- never change them by vibes.
-CHUNK_SIZE = 300          # words per chunk
-CHUNK_OVERLAP = 45        # ~15% overlap, so a rule isn't cut at a boundary
+CHUNK_SIZE = 450          # words per chunk
+CHUNK_OVERLAP = 90        # ~15% overlap, so a rule isn't cut at a boundary
 TOP_K = 4                 # 3-5 good chunks beat 20 noisy ones
 MIN_SCORE = 0.45          # below this we answer "I couldn't find that"
 

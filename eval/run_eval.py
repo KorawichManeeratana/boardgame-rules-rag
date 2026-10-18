@@ -22,8 +22,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from eval.align import evaluate as evaluate_by_text  # noqa: E402
 from eval.baselines import BM25, RandomBaseline  # noqa: E402
-from eval.metrics import evaluate, format_table  # noqa: E402
+from eval.metrics import evaluate as evaluate_by_id, format_table  # noqa: E402
 from rag import config  # noqa: E402
 from rag.embeddings import cosine, embed  # noqa: E402
 from rag.store import VectorStore  # noqa: E402
@@ -77,7 +78,26 @@ def main() -> None:
 
     # --- ranking quality ----------------------------------------------------
     questions = [r["q"] for r in answerable]
-    gold = [set(r["relevant"]) for r in answerable]
+    by_id = {r["id"]: r["text"] for r in store.records}
+
+    # Prefer the pinned gold TEXT when the eval set carries it: ids stop
+    # meaning anything once the chunking changes, and scoring against stale
+    # ids fails silently rather than loudly. See scripts/pin_eval_text.py.
+    by_text = all(row.get("relevant_text") for row in answerable)
+    if by_text:
+        gold = [row["relevant_text"] for row in answerable]
+        print("matching gold answers by text (chunking-independent)\n")
+
+        def score(ranked_ids: list[list[str]]) -> dict:
+            ranked_texts = [[by_id[i] for i in ids] for ids in ranked_ids]
+            return evaluate_by_text(list(zip(ranked_texts, gold)), args.k)
+    else:
+        gold = [set(row["relevant"]) for row in answerable]
+        print("matching gold answers by chunk id -- run scripts/pin_eval_text.py\n"
+              "to pin them to text, or these numbers break on the next re-ingest\n")
+
+        def score(ranked_ids: list[list[str]]) -> dict:
+            return evaluate_by_id(list(zip(ranked_ids, gold)), args.k)
 
     bm25 = BM25(store.records)
     rnd = RandomBaseline(store.records)
@@ -87,10 +107,7 @@ def main() -> None:
         "BM25 (keyword)": [bm25.search(q, args.k) for q in questions],
         "bge-m3 (vector)": vector_rankings(store, questions, args.k),
     }
-    results = {
-        name: evaluate(list(zip(ranked, gold)), args.k)
-        for name, ranked in systems.items()
-    }
+    results = {name: score(ranked) for name, ranked in systems.items()}
     table = format_table(results)
     print(table)
 

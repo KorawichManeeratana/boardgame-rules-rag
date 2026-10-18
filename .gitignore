@@ -3,6 +3,7 @@
 __pycache__/
 *.pyc
 .pytest_cache/
-# the built index is reproducible from `make ingest` -- keep it out of git
+# the built index and the embedding cache are both derived -- rebuild, don't commit
 data/index/*.json
+data/index/*.jsonl
 !data/index/.gitkeep

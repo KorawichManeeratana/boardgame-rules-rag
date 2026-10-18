@@ -24,9 +24,15 @@ from rag.store import VectorStore  # noqa: E402
 
 
 def read_pdf(path: Path) -> list[dict]:
-    """One record per page, carrying the citation metadata."""
+    """One record per page, carrying the citation metadata.
+
+    `game` is the part of the filename before the first hyphen, so
+    wingspan-rulebook.pdf and wingspan-appendix.pdf share game="wingspan"
+    and can be filtered together, while `source` still names the exact book
+    a citation came from.
+    """
     reader = PdfReader(str(path))
-    game = path.stem.replace("-", " ").replace("_", " ")
+    game = path.stem.split("-")[0].lower()
     pages = []
     for number, page in enumerate(reader.pages, start=1):
         text = (page.extract_text() or "").strip()
