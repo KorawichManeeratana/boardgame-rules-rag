@@ -1,0 +1,729 @@
+% รายงานโครงงาน Board Game Rules Assistant (ฉบับภาษาไทย)
+%
+% ต้องคอมไพล์ด้วย XeLaTeX เท่านั้น (ภาษาไทยต้องใช้ Unicode font + การตัดคำของ XeTeX)
+%     latexmk -xelatex report-th.tex
+%     หรือ   xelatex report-th.tex   (รันสองรอบเพื่อให้สารบัญและ \ref ถูกต้อง)
+%
+% ฟอนต์: สคริปต์จะไล่หา TH Sarabun New -> Leelawadee UI -> Loma -> FreeSerif
+% ตัวไหนมีในเครื่องก็ใช้ตัวนั้น ไม่ต้องแก้อะไร
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{fontspec}
+\usepackage[margin=2.1cm,top=2.3cm,bottom=1.9cm]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage[hidelinks]{hyperref}
+\usetikzlibrary{positioning,arrows.meta,fit,calc}
+
+% ---------------------------------------------------------------- ฟอนต์ไทย
+% เลือกฟอนต์ตัวแรกที่หาเจอในเครื่อง พร้อมสเกลที่เหมาะกับฟอนต์นั้น
+% ลำดับ: TH Sarabun New (มาตรฐานราชการ) -> Sarabun (Google Fonts, รูปทรงเดียวกัน)
+%        -> Leelawadee UI (ติดมากับ Windows) -> Loma -> FreeSerif
+% ไม่ต้องแก้อะไร ลงฟอนต์ที่ต้องการในเครื่องแล้ว build ใหม่ สคริปต์จะหยิบเอง
+% ลำดับ: ไฟล์ .ttf ที่วางไว้ข้างไฟล์นี้มาก่อนเสมอ (ใช้ได้ทั้ง Overleaf และเครื่องตัวเอง)
+% ถ้าไม่มีไฟล์ ค่อยไล่หาฟอนต์ที่ติดตั้งในระบบ
+% \typeout คือการพิมพ์ลง log เพื่อให้รู้ว่าสุดท้ายใช้ฟอนต์ไหน -- ค้นคำว่า
+% "FONT CHOSEN" ใน Raw logs ได้เลย
+\IfFileExists{Sarabun-Regular.ttf}{
+  \setmainfont{Sarabun}[
+    Path = ./, Extension = .ttf,
+    UprightFont = *-Regular, BoldFont = *-Bold, Scale = 1.00]
+  \typeout{FONT CHOSEN: Sarabun (from the .ttf files next to this document)}
+}{\IfFontExistsTF{TH Sarabun New}{
+  \setmainfont{TH Sarabun New}[Scale=1.30]
+  \typeout{FONT CHOSEN: TH Sarabun New (installed on this machine)}
+}{\IfFontExistsTF{Sarabun}{
+  \setmainfont{Sarabun}[Scale=1.05]
+  \typeout{FONT CHOSEN: Sarabun (installed on this machine)}
+}{\IfFontExistsTF{Leelawadee UI}{
+  \setmainfont{Leelawadee UI}[Scale=1.00]
+  \typeout{FONT CHOSEN: Leelawadee UI}
+}{\IfFontExistsTF{Loma}{
+  \setmainfont{Loma}[Scale=0.95]
+  \typeout{FONT CHOSEN: Loma -- upload the Sarabun .ttf files to get Sarabun}
+}{
+  \setmainfont{FreeSerif}
+  \typeout{FONT CHOSEN: FreeSerif -- no Thai font found!}
+}}}}}
+
+\IfFontExistsTF{DejaVu Sans Mono}{
+  \setmonofont{DejaVu Sans Mono}[Scale=0.84]
+}{\IfFontExistsTF{Consolas}{
+  \setmonofont{Consolas}[Scale=0.92]
+}{
+  \setmonofont{Courier New}[Scale=0.92]
+}}
+
+% การตัดคำภาษาไทย (XeTeX ใช้ ICU; ภาษาไทยไม่มีช่องว่างระหว่างคำ)
+\ifdefined\XeTeXlinebreaklocale
+  \XeTeXlinebreaklocale "th"
+  \XeTeXlinebreakskip = 0pt plus 0.1pt minus 0.05pt
+\fi
+
+% ชื่อองค์ประกอบเป็นภาษาไทย
+\renewcommand{\contentsname}{สารบัญ}
+\renewcommand{\figurename}{รูปที่}
+\renewcommand{\tablename}{ตารางที่}
+\renewcommand{\appendixname}{ภาคผนวก}
+
+% ---------------------------------------------------------------- สีประจำเล่ม
+\definecolor{forest}{HTML}{2C5F2D}
+\definecolor{moss}{HTML}{97BC62}
+\definecolor{mist}{HTML}{EFF4EC}
+\definecolor{ink}{HTML}{16271A}
+\definecolor{clay}{HTML}{B85042}
+\definecolor{slate}{HTML}{50808E}
+\definecolor{rule}{HTML}{D6E0CE}
+\definecolor{codebg}{HTML}{F2F2F2}  % พื้นบล็อกโค้ด (เทาอ่อน)
+
+\hypersetup{
+  colorlinks=true, allcolors=black,
+  pdftitle={Board Game Rules Assistant},
+  pdfsubject={Building LLM-Powered Applications -- Capstone},
+  pdfkeywords={RAG, retrieval evaluation, agent, grounded question answering}
+}
+
+% ------------------------------------------------------------- หัว/ท้ายกระดาษ
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{14pt}
+\fancyhead[R]{\small\thepage}
+
+% --------------------------------------------------------------- หัวข้อ
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{0.7em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{0.7em}{}
+\titlespacing*{\section}{0pt}{1.1em}{0.5em}
+\titlespacing*{\subsection}{0pt}{0.8em}{0.3em}
+
+% หมายเหตุ: เคยให้ทุกหัวข้อขึ้นหน้าใหม่ แต่ตัดออกเพื่อให้รายงานอยู่ในกรอบจำนวนหน้า
+
+\setlist[itemize]{leftmargin=1.2em,itemsep=0.12em,topsep=0.25em,parsep=0pt}
+\captionsetup{font=small,labelfont=bf}
+\linespread{1.0}
+
+% ลอยน้อยที่สุด ให้รูปและตารางอยู่ใกล้ข้อความที่อ้างถึง
+\setlength{\floatsep}{9pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\intextsep}{9pt plus 2pt minus 2pt}
+\makeatletter
+\setlength{\@fpsep}{10pt}
+\makeatother
+\raggedbottom
+
+% ----------------------------------------------------------------- ตาราง
+\renewcommand{\arraystretch}{1.15}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcommand{\thead}[1]{\textbf{#1}}
+
+% --------------------------------------------------------------- โค้ด
+\lstdefinestyle{shell}{
+  basicstyle=\ttfamily\footnotesize,
+  backgroundcolor=\color{codebg},
+  frame=single, framerule=0pt, framesep=7pt,
+  xleftmargin=0pt, xrightmargin=0pt,
+  breaklines=true, breakatwhitespace=true,
+  columns=fullflexible, keepspaces=true,
+  commentstyle=\itshape,
+  morecomment=[l]{\#},
+  aboveskip=0.7em, belowskip=0.7em
+}
+\lstset{style=shell}
+% หมายเหตุ: ฟอนต์ monospace ไม่มีสระ/พยัญชนะไทย
+% ดังนั้นอย่าใส่ข้อความไทยใน lstlisting -- ใช้คอมเมนต์ภาษาอังกฤษ
+
+% ------------------------------------------------------------------ กล่อง
+\newtcolorbox{keybox}[1][]{
+  colback=white, colframe=black, boxrule=0.6pt, arc=2pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt, #1
+}
+\newtcolorbox{warnbox}[1][]{
+  colback=white, colframe=black, boxrule=0.6pt, arc=2pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt, #1
+}
+
+% ------------------------------------------------------------ สไตล์ไดอะแกรม
+\tikzset{
+  stage/.style={draw=forest, fill=mist, rounded corners=2pt, align=center,
+                inner sep=3.5pt, text width=6.2cm, font=\footnotesize},
+  dark/.style={draw=ink, fill=ink, text=white, rounded corners=2pt, align=center,
+               inner sep=3.5pt, text width=6.2cm, font=\footnotesize},
+  side/.style={draw=clay, fill=clay!8, rounded corners=2pt, align=center,
+               inner sep=4pt, text width=4.0cm, font=\footnotesize},
+  flow/.style={-{Latex[length=2.4mm]}, draw=forest, thick},
+  sideflow/.style={-{Latex[length=2.4mm]}, draw=clay, thick},
+  lbl/.style={font=\scriptsize\itshape, inner sep=2pt}
+}
+
+\newcommand{\code}[1]{\texttt{\small #1}}
+
+% ===================================================================== %
+%  แก้ข้อมูลหน้าปกที่นี่ที่เดียว  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %
+% ===================================================================== %
+\newcommand{\term}{ภาคการศึกษา 1 ปีการศึกษา 2569}
+\newcommand{\reporttitle}{Board Game Rules Assistant}
+\newcommand{\reportsubtitle}{ระบบถาม-ตอบกฎบอร์ดเกมจากคู่มือจริง พร้อมอ้างอิงไฟล์และเลขหน้า}
+\newcommand{\studentname}{นาย กรวิชญ์ มณีรัตน์}
+\newcommand{\studentid}{66070234}
+\newcommand{\lecturer}{ดร. ณัฏฐ์ ดิลกธนากุล}
+\newcommand{\coursecode}{06016475}
+\newcommand{\coursename}{SPECIAL TOPICS IN INFORMATION TECHNOLOGY 3}
+\newcommand{\programme}{หลักสูตรวิทยาศาสตรบัณฑิต สาขาวิชาเทคโนโลยีสารสนเทศ}
+\newcommand{\faculty}{คณะเทคโนโลยีสารสนเทศ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง}
+% ตราสถาบัน: วางไฟล์ชื่อ logo.png (หรือ .pdf/.jpg) ไว้ข้างไฟล์นี้
+% ถ้าไม่มีไฟล์ หน้าปกจะเว้นที่ว่างขนาดเท่ากันไว้ให้ ไม่พัง
+\newcommand{\logofile}{logo.png}
+% ===================================================================== %
+
+% ====================================================================== %
+\begin{document}
+
+% ------------------------------------------------------------- หน้าปก
+\thispagestyle{empty}
+\begin{flushright}\small \term\end{flushright}
+
+\begin{center}
+\vspace{0.3cm}
+
+\IfFileExists{\logofile}{\includegraphics[height=3.6cm]{\logofile}}{%
+  \rule{0pt}{3.6cm}\typeout{COVER: logo file not found -- space left blank}}
+
+\vspace{0.9cm}
+
+{\LARGE\bfseries \reporttitle}\\[0.5em]
+{\large \reportsubtitle}
+
+\vspace{1.6cm}
+
+{\bfseries จัดทำโดย}\\[0.6em]
+\studentname\qquad รหัสนักศึกษา\ \studentid
+
+\vspace{1.6cm}
+
+{\bfseries เสนอ}\\[0.6em]
+\lecturer
+
+\vspace{1.6cm}
+
+รายงานนี้เป็นส่วนหนึ่งของรายวิชา\\[0.35em]
+\coursecode\ \coursename\\[0.35em]
+\programme\\[0.35em]
+\faculty
+
+\end{center}
+\clearpage
+
+% ------------------------------------------------------------ บทคัดย่อ
+\section*{บทคัดย่อ}
+
+การถกเถียงเรื่องกฎระหว่างเล่นบอร์ดเกมทำให้เกมต้องหยุดชะงัก และคำตอบของข้อถกเถียง
+นั้นมักอยู่ในย่อหน้าเดียวบนหน้าใดหน้าหนึ่งของคู่มือซึ่งผู้เล่นไม่สะดวกเปิดค้นในระหว่างเกม
+รายงานนี้นำเสนอ Board Game Rules Assistant ซึ่งเป็นระบบถาม-ตอบที่ตอบคำถามเรื่องกฎ
+จากคู่มือจริงเป็นภาษาปกติ พร้อมระบุชื่อไฟล์และเลขหน้าที่เป็นแหล่งที่มาของคำตอบ
+เพื่อให้ผู้ใช้ตรวจสอบย้อนกลับได้ด้วยตนเอง คลังข้อมูลที่ใช้คือคู่มือของเกม Wingspan
+จำนวนสี่เล่ม ได้แก่ คู่มือหลัก ภาคเสริม Asia ภาคผนวกความสามารถนก และกฎสำหรับเล่นคนเดียว
+รวม 44 หน้า
+
+ระบบแบ่งข้อความที่สกัดจากคู่มือออกเป็นส่วนย่อยตามขอบเขตย่อหน้า ขนาด 450 คำ
+ซ้อนทับกัน 90 คำ ได้ทั้งสิ้น 74 ส่วน โดยแต่ละส่วนเก็บชื่อไฟล์และเลขหน้ากำกับไว้
+แล้วแปลงเป็นเวกเตอร์ด้วยแบบจำลอง bge-m3 ค้นคืนด้วยค่าความคล้ายแบบโคไซน์
+และกำหนดเกณฑ์คะแนนขั้นต่ำไว้ที่ 0.45 เพื่อให้ปฏิเสธการตอบเมื่อไม่พบหลักฐานเพียงพอ
+แทนการคาดเดาคำตอบ รายการอ้างอิงสร้างจากส่วนข้อความที่ถูกค้นคืนมาจริงด้วยโปรแกรม
+ไม่ได้แยกจากข้อความที่แบบจำลองสร้างขึ้น และการค้นคืนถูกห่อให้อยู่ในรูปเครื่องมือ
+ที่แบบจำลองเลือกเรียกใช้เองได้ เพื่อให้การค้นเป็นการตัดสินใจตามลักษณะของคำถาม
+
+การประเมินผลใช้ชุดคำถามที่ผู้จัดทำกำกับคำตอบด้วยตนเองจำนวน 24 ข้อ แบ่งเป็นคำถามที่มี
+คำตอบอยู่ในคลังข้อมูล 20 ข้อ และคำถามที่คลังข้อมูลไม่มีคำตอบ 4 ข้อ โดยวัดด้วยค่า
+recall@4 precision@4 และ MRR เทียบกับเกณฑ์อ้างอิงสองแบบ คือการสุ่มและการค้นแบบ
+คำสำคัญด้วย BM25 ผลการทดลองพบว่าการค้นคืนด้วยเวกเตอร์ได้ค่า recall@4 เท่ากับ 0.683
+ขณะที่ BM25 ได้ 0.400 และการสุ่มได้ 0.050 นอกจากนี้ได้ทดลองปรับขนาดส่วนย่อยของเอกสาร
+จำนวนหกรูปแบบบนชุดคำถามเดียวกัน พบว่าการเปลี่ยนจากขนาด 300 คำซ้อนทับ 45 คำ
+เป็น 450 คำซ้อนทับ 90 คำ ทำให้ค่า recall@4 เพิ่มขึ้นจาก 0.533 เป็น 0.683 และค่า MRR
+เพิ่มขึ้นจาก 0.512 เป็น 0.642 ทั้งนี้การเทียบคำตอบที่กำกับไว้ใช้วิธีเปรียบเทียบด้วยตัวข้อความ
+แทนการอ้างอิงด้วยรหัสของส่วนย่อย เนื่องจากรหัสดังกล่าวเปลี่ยนความหมายทันทีที่มีการ
+แบ่งส่วนใหม่
+
+ผลการทดลองยังแสดงข้อจำกัดที่ยังแก้ไม่ได้สองประการ ประการแรกคือการปฏิเสธการตอบ
+ซึ่งระบบปฏิเสธได้ถูกต้องเพียง 1 ข้อจากคำถามที่ไม่มีคำตอบ 4 ข้อ เนื่องจากช่วงคะแนนของ
+คำถามทั้งสองกลุ่มทับซ้อนกัน จึงไม่มีเกณฑ์คะแนนใดที่แยกออกจากกันได้ ประการที่สองคือ
+กรณีที่ระบบให้คำตอบซึ่งถูกต้องตามหลักฐานที่ค้นเจอแต่ไม่ครบถ้วน เพราะข้อยกเว้นของกฎ
+ข้อนั้นไม่ถูกค้นคืนขึ้นมา ทั้งที่มีอยู่จริงในคลังข้อมูล และการปรับขนาดส่วนย่อยที่ทำให้ค่า
+recall สูงขึ้นดังกล่าวข้างต้น คือสาเหตุที่ทำให้ข้อยกเว้นนั้นถูกค้นพบได้ยากขึ้น
+
+\vspace{1em}
+\noindent\textbf{คำสำคัญ:}\quad retrieval-augmented generation, การประเมินผลการค้นคืน,
+agent, การอ้างอิงแหล่งที่มา, บอร์ดเกม
+
+% รายงานฉบับนี้อยู่ในกรอบ 8 หน้า จึงไม่ใส่สารบัญ
+% ถ้าต้องการสารบัญ ให้เอาเครื่องหมาย % ออกจากบรรทัดล่างนี้
+% {\small\tableofcontents}\clearpage
+
+% ====================================================================== %
+\section{ปัญหา และผู้ใช้}
+
+การเถียงกันเรื่องกฎทำให้เกมหยุด คนหนึ่งมั่นใจว่าวางไข่บนรังที่เต็มแล้วไม่ได้
+อีกคนมั่นใจว่าได้ และคำตอบอยู่ในย่อหน้าเดียว หน้าเดียว ของคู่มือที่ไม่มีใคร
+อยากเปิดหาตอนที่อีกสี่คนรออยู่
+
+\textbf{Board Game Rules Assistant} ตอบคำถามนั้นเป็นภาษาปกติ
+แล้วอ้างอิงชื่อไฟล์และเลขหน้า เพื่อให้คนที่โต๊ะเปิดตรวจแล้วเล่นต่อได้
+ระบบนี้ออกแบบมาสำหรับคนสองแบบ: ผู้เล่นกลางเกมที่ต้องการคำตัดสินภายในสามสิบวินาที
+และคนที่กำลังสอนเกมที่ตัวเองจำได้ครึ่งเดียว
+
+คลังข้อมูลคือคู่มือ Wingspan สี่เล่ม ได้แก่ คู่มือหลัก, Asia expansion,
+ภาคผนวกความสามารถนก และกฎเล่นคนเดียว (Automa) ที่เลือกเกมนี้เพราะคำถามเรื่องกฎ
+ของมันมีคำตอบที่ถูกต้องพิมพ์อยู่ในหน้าใดหน้าหนึ่งจริง ผลลัพธ์จึงตรวจสอบได้ ---
+citation ที่ผิดจะเห็นว่าผิดทันที และการสร้างชุดข้อมูลประเมินผลที่ label เองก็ทำได้
+ด้วยต้นทุนต่ำ ส่วน Asia expansion ถูกเลือกแทนภูมิภาคอื่นเพราะเป็นภาคที่ผู้เล่น
+กลุ่มเป้าหมายมีอยู่จริง
+
+% ====================================================================== %
+\section{การออกแบบ}
+
+\subsection{ไปป์ไลน์}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=2.6mm]
+  \node[stage] (a) {คู่มือ 4 ไฟล์ (PDF)\\[1pt]\scriptsize \code{pypdf} ดึงข้อความรายหน้า};
+  \node[stage, below=of a] (b) {แบ่ง chunk ตามย่อหน้า ขนาด 450 คำ overlap 90\\[1pt]\scriptsize แต่ละ chunk เก็บ \code{source} และ \code{page} ติดไปด้วย};
+  \node[stage, below=of b] (c) {\code{bge-m3} embeddings\\[1pt]\scriptsize 1024 มิติ};
+  \node[dark,  below=of c] (d) {\code{data/index/chunks.json}\\[1pt]\scriptsize 74 chunks};
+  \draw[flow] (a) -- (b);
+  \draw[flow] (b) -- (c);
+  \draw[flow] (c) -- (d);
+\end{tikzpicture}
+\caption{การสร้าง index แบบออฟไลน์ (\code{scripts/ingest.py})}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=2.6mm]
+  \node[stage] (q) {คำถาม $\rightarrow$ \code{bge-m3}\\[1pt]\scriptsize ใช้โมเดลเดียวกับที่ embed เอกสาร};
+  \node[stage, below=of q] (s) {cosine กับทั้ง 74 chunks\\[1pt]\scriptsize brute force ไม่ใช่ ANN index};
+  \node[stage, below=of s] (f) {\code{min\_score} floor ที่ 0.45 แล้ว dedupe hit ที่ซ้ำกัน};
+  \node[stage, below=of f] (k) {top-4 chunks};
+  \node[side, right=12mm of k] (none) {ว่างเปล่า?\\[1pt]\textbf{“ไม่พบคำตอบในคู่มือ”}\\[1pt]\scriptsize ไม่เรียกโมเดลเลย};
+  \node[stage, below=of k] (p) {context ที่ใส่หมายเลข $+$ คำถาม};
+  \node[stage, below=of p] (m) {\code{gemma-4-E4B-it}, \code{temperature 0}};
+  \node[dark,  below=of m] (o) {คำตอบ $+$ citation ที่สร้างจาก hit ที่ดึงมาจริง};
+  \draw[flow] (q) -- (s);
+  \draw[flow] (s) -- (f);
+  \draw[flow] (f) -- (k);
+  \draw[flow] (k) -- node[lbl, right] {ไม่ว่าง} (p);
+  \draw[sideflow] (k) -- node[lbl, above] {ว่าง} (none);
+  \draw[flow] (p) -- (m);
+  \draw[flow] (m) -- (o);
+\end{tikzpicture}
+\caption{ขั้นตอนตอนรับคำถาม ถ้าผลการค้นว่างเปล่า ระบบจะหยุดก่อนถึงโมเดล}
+\end{figure}
+
+เส้นทางของ agent (\code{src/rag/agent.py}) ใช้ retriever ตัวเดียวกัน
+แต่ห่อให้เป็น tool
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=8mm and 10mm]
+  \node[stage, text width=3.0cm] (q) {คำถาม};
+  \node[stage, text width=3.0cm, right=of q] (model) {โมเดล};
+  \node[stage, text width=4.8cm, right=of model] (ans)
+        {ไม่เรียก tool:\\ข้อความนั้น\textbf{คือ}คำตอบ};
+  \node[stage, text width=4.2cm, below=12mm of model] (tool)
+        {\code{search\_docs(query)}};
+  \draw[flow] (q) -- (model);
+  \draw[flow] (model) -- node[lbl, above] {ไม่เรียก} (ans);
+  \draw[flow] (model.south) -- node[lbl, right] {เรียก tool} (tool.north);
+  \draw[flow] (tool.west) to[out=180, in=215]
+        node[lbl, left, pos=0.55] {ผลลัพธ์} (model.215);
+\end{tikzpicture}
+\caption{agent loop: วนได้ไม่เกิน \code{max\_steps} และในก้าวสุดท้ายจะถอน tool
+ออกเพื่อบังคับให้ตอบ}
+\end{figure}
+
+\subsection{กลุ่มความสามารถทั้งสาม และเหตุผลที่เลือกสามกลุ่มนี้}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}L{3.3cm} L{3.0cm} L{8.2cm}@{}}
+\toprule
+\thead{กลุ่ม} & \thead{อยู่ที่ไหน} & \thead{ทำไม} \\
+\midrule
+Retrieval / RAG & \code{src/rag/} &
+เป้าหมายทั้งหมดคือคำตอบที่ยึดกับหน้าใดหน้าหนึ่งจริง ไม่ใช่ความจำของโมเดลเกี่ยวกับ Wingspan \\
+การประเมินผล retrieval & \code{eval/} &
+ขนาด chunk, \code{top\_k} และ \code{min\_score} เป็นแค่การเดาจนกว่าจะมีอะไรมาวัด
+การประเมินผลเกิดขึ้นก่อนการปรับจูน และเปลี่ยนสิ่งที่ถูกสร้างขึ้นจริง \\
+Agent loop ที่มี tool & \code{src/rag/agent.py} &
+การค้นหนึ่งครั้งต่อหนึ่งคำถามทำให้เสียการค้นไปกับคำว่า “thanks”
+และกู้คืนจากการค้นครั้งแรกที่พลาดไม่ได้ เมื่อทำเป็น tool การค้นจึงเป็นการตัดสินใจของโมเดล \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+ส่วนติดต่อแบบ served interface (FastAPI/SSE) ถูกตัดออกจากขอบเขต
+การทำการประเมินผลให้เสร็จอย่างถูกต้องมีค่ามากกว่าการมีกลุ่มที่สี่แบบทำค้างไว้ครึ่งเดียว
+
+\subsection{การตัดสินใจที่ต้องอธิบายได้}
+
+\begin{itemize}
+  \item \textbf{ใช้ cosine แบบ brute force ไม่ใช่ ANN index} --- 74 chunks
+        สแกนจบในระดับมิลลิวินาที index แบบประมาณค่าคือความซับซ้อนที่ซื้อมาก่อนจำเป็น
+  \item \textbf{ใช้ embedding model ตัวเดียวทุกที่} --- vector จากคนละโมเดลเทียบกันไม่ได้
+        ดังนั้น \code{bge-m3} จึง embed ทั้งเอกสารและคำถาม และชื่อโมเดลถูกเก็บไว้ใน
+        metadata ของ index
+  \item \textbf{citation สร้างจากโค้ดของเราเอง จาก hit ที่ retrieval ดึงมาจริง} ---
+        ไม่ได้แกะจากข้อความที่โมเดลเขียน โมเดลสร้าง chunk id ปลอมในข้อความได้
+        แต่มันเอา id นั้นเข้าไปอยู่ในรายการ source ไม่ได้
+  \item \textbf{ไม่เรียกโมเดลเมื่อ retrieval ไม่พบอะไรเลย} ---
+        การป้อน context ว่างให้โมเดลแล้วหวังว่ามันจะปฏิเสธเอง
+        คือช่องทางที่ทำให้เกิดคำตอบมั่ว ๆ ที่ดูมั่นใจ ไม่มีหลักฐาน ก็ไม่ตอบ
+  \item \textbf{\code{temperature=0} ทุกจุด} เพื่อให้ตัวเลขทุกตัวในรายงานนี้ทำซ้ำได้
+\end{itemize}
+
+% ====================================================================== %
+\section{การประเมินผล}
+
+\subsection{ชุดคำถามทดสอบ}
+\label{sec:testset}
+
+คำถาม 24 ข้อ label ด้วยมือเทียบกับคลังข้อมูล
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}L{9cm} C{2.4cm}@{}}
+\toprule
+\thead{} & \thead{จำนวน} \\
+\midrule
+ตอบได้ (บันทึก gold chunk ไว้) & 20 \\
+ตอบไม่ได้ (ต้องไม่คืนอะไรเลย) & 4 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+คำถามที่ตอบไม่ได้ไม่ใช่ตัวถ่วง มันเป็นสิ่งเดียวที่วัดว่าเส้นทาง “ไม่รู้” ทำงานหรือไม่
+และเป็นจุดที่ระบบนี้อ่อนที่สุด (หัวข้อ~\ref{sec:abstain})
+
+คำถามถูกเขียนแบบที่ผู้เล่นพูด ไม่ใช่แบบที่คู่มือเขียน โดยสี่ข้อเป็นการถอดความกฎที่
+คลังข้อมูลมีอยู่จริงโดยตั้งใจ เพราะนั่นคือจุดที่ dense retrieval ควรชนะการจับคู่คำ
+และการตัดคำถามแบบนี้ออกจะเป็นการเข้าข้าง BM25
+
+\textbf{bias ของการ label และสิ่งที่ทำเพื่อลดมัน}\quad
+chunk ที่เป็นตัวเลือกถูกจัดอันดับด้วย retriever ตัวเดียวกับที่กำลังถูกประเมิน
+label จึงเอนไปทางสิ่งที่มันหาเจออยู่แล้ว เพราะ chunk ที่มันไม่เคยแสดงก็ label ไม่ได้
+จึงมีการป้องกันสองอย่างใน \code{scripts/label.py} คือคำสั่ง \code{/find} ที่แสดง
+ตัวเลือกด้วย BM25 แทน และการพิมพ์ chunk id ใดก็ได้ไม่ว่ามันจะถูกเสนอมาหรือไม่
+ทั้งสองอย่างถูกใช้จริง bias ลดลงแต่ไม่ได้หายไป ส่วนคำถามที่ถูกตัดทิ้งเพราะไม่มี chunk
+ไหนตอบได้ บันทึกไว้ใน \code{eval/skipped.txt} และอภิปรายในหัวข้อ~\ref{sec:pictures}
+
+\subsection{Metric ที่ใช้}
+
+\textbf{recall@4} วัดว่าจาก chunk ที่ควรถูกดึงมา มีกี่อันที่อยู่ภายใน cutoff ที่ prompt
+ใช้จริง \textbf{precision@4} วัดว่าสิ่งที่โมเดลถูกบังคับให้อ่านมีประโยชน์กี่ส่วน และ
+\textbf{MRR} วัดว่า chunk ที่ถูกต้องอันแรกอยู่อันดับที่เท่าไรโดยไล่ดูทั้งอันดับ ไม่หยุดที่ cutoff
+สองค่าหลังไม่ตรงกันโดยตั้งใจ เพราะ recall ถามว่า “อยู่ใน cutoff ไหม” ส่วน MRR ถามว่า
+“อยู่สูงแค่ไหนในภาพรวม” รายงานทั้งคู่เพราะ chunk ที่หาไม่เจอ กับ chunk ที่ถูกฝังอยู่ลึก
+เป็นคนละปัญหากัน
+
+\subsection{Baseline}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}L{3.6cm} L{10.6cm}@{}}
+\toprule
+\thead{baseline} & \thead{ใช้ทดสอบอะไร} \\
+\midrule
+random (กำหนด seed) & พื้นอ้างอิง ถ้าระบบจริงชนะการสุ่มไม่ได้ ก็ไม่ต้องอ่านอย่างอื่นต่อ \\
+BM25 & คู่แข่งที่สมเหตุสมผล: IDF $\times$ saturating TF $\times$ length penalty
+เอาชนะไม่ได้เมื่อเจอ token เฉพาะที่ตรงตัว แต่มองไม่เห็นคำพ้องความหมาย \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{ผลลัพธ์}
+\label{sec:results}
+
+74 chunks, $k=4$, คำถามที่ตอบได้ 20 ข้อ
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}L{5.2cm} C{2.6cm} C{2.6cm} C{2.6cm}@{}}
+\toprule
+\thead{ระบบ} & \thead{recall@4} & \thead{precision@4} & \thead{MRR} \\
+\midrule
+random (พื้นอ้างอิง) & 0.050 & 0.025 & 0.067 \\
+BM25 (keyword)       & 0.400 & 0.212 & 0.254 \\
+\textbf{\code{bge-m3} (vector)} & \textbf{0.683} & \textbf{0.350} & \textbf{0.642} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+vector retrieval ชนะการสุ่ม 14 เท่า และชนะ BM25 1.7 เท่าในด้าน recall
+ตัวเลข 0.400 ของ BM25 ไม่ใช่ผลที่อ่อน และหัวข้อ~\ref{sec:bm25wins}
+แสดงคำถามที่ BM25 ชนะขาด
+
+ทำซ้ำได้ด้วย \code{uv run -{}-env-file .env python -m eval.run\_eval}
+
+\subsection{การปรับปรุงที่วัดได้: ขนาดของ chunk}
+\label{sec:sweep}
+
+ค่าเริ่มต้นแบบไม่คิดมากคือ chunk ตามย่อหน้าขนาด 300 คำ overlap 15\%
+ซึ่งเลือกตามสไลด์ ไม่ได้มาจากหลักฐาน จึงกวาดทดสอบหกค่าบนคำถามชุดเดียวกัน
+โดยไม่เปลี่ยนอย่างอื่นเลย
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}L{5.6cm} C{1.8cm} C{2.1cm} C{2.3cm} C{1.8cm}@{}}
+\toprule
+\thead{config} & \thead{chunks} & \thead{recall@4} & \thead{precision@4} & \thead{MRR} \\
+\midrule
+paragraph 300/45 \emph{(ค่าเริ่มต้น)} & 111 & 0.533 & 0.275 & 0.512 \\
+fixed 300/0 & 99 & 0.583 & 0.275 & 0.508 \\
+paragraph 300/0 & 108 & 0.558 & 0.250 & 0.492 \\
+\textbf{paragraph 450/90} & \textbf{74} & \textbf{0.683} & \textbf{0.350} & \textbf{0.642} \\
+paragraph 600/120 & 59 & 0.683 & \textit{0.312} & 0.642 \\
+paragraph 200/40 & 160 & 0.558 & 0.312 & 0.533 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{keybox}
+\textbf{recall@4: 0.533 $\rightarrow$ 0.683 (+0.150) \qquad
+MRR: 0.512 $\rightarrow$ 0.642 (+0.130)}
+\end{keybox}
+
+มีสองเหตุผลที่ทำให้ตัวเลขนี้น่าเชื่อถือ
+
+\textbf{450 เป็นจุดยอด ไม่ใช่ค่าที่ใหญ่ที่สุดที่ลอง}\quad
+chunk ขนาด 600 คำให้ recall เท่ากันเป๊ะ แต่เสีย precision
+($0.350 \rightarrow 0.312$) เส้นโค้งราบแล้วเริ่มมีต้นทุน
+นั่นคือเหตุผลที่เลือกใช้ 450 แทนที่จะเป็นเลขที่ใหญ่ที่สุดในตาราง
+
+\textbf{วิธีวัดทำงานต้านผู้ชนะ}\quad
+เฉลยถูกเทียบด้วย\emph{ข้อความ} ไม่ใช่ chunk id
+เพราะ id ไม่มีความหมายทันทีที่ chunking เปลี่ยน ---
+ถ้าเทียบด้วย id ทุกแถวในตารางจะถูกให้คะแนนเทียบกับ passage ที่ผิด
+โดยที่ไม่มีอะไรฟ้องเลย กติกาการเทียบด้วยข้อความถือว่าเฉลยถูกพบ
+เมื่อ chunk ที่ดึงมามีเนื้อหาครอบคลุมเฉลยนั้นเป็นส่วนใหญ่ ซึ่ง\emph{เอื้อ chunk ขนาดเล็ก}:
+เฉลยที่ถูกตัดเป็นสามท่อนนับว่าพบ ถ้าดึงท่อนใดท่อนหนึ่งขึ้นมาได้
+แต่ config ที่ชนะมีจำนวน chunk น้อยเป็นอันดับสองของตาราง
+bias จึงดึงไปทางตรงข้าม ค่า $+0.150$ จึงเป็นการประเมินที่ต่ำกว่าความจริง
+
+นี่ไม่ใช่การเดาแล้วฟลุก สมมติฐานมาจาก chunk ที่สังเกตเห็นตอน label
+ซึ่งประกาศว่า “powers fall into 3 categories” แล้วกลับมีอยู่แค่สองแบบ ---
+แบบที่สามถูกตัดไปอยู่ chunk ถัดไป (หัวข้อ~\ref{sec:split})
+
+% ====================================================================== %
+\section{การวิเคราะห์: จุดที่ล้มเหลว}
+
+รายละเอียดเต็มพร้อมคำสั่งสำหรับทำซ้ำอยู่ใน \code{eval/FAILURE\_CASES.md}
+
+\subsection{dense retrieval พลาดสิ่งที่ BM25 หาเจอ}
+\label{sec:bm25wins}
+
+คำถามสามข้อที่เขียนแบบที่ผู้เล่นพูด
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}L{6.4cm} L{7.9cm}@{}}
+\toprule
+\thead{คำถาม} & \thead{ผลที่ได้} \\
+\midrule
+“Can I play a bird in any habitat I want?” & เฉลยไม่อยู่ใน vector top-10 แต่ BM25 เจอที่อันดับ 3 \\
+“Where am I allowed to put a new bird?” & เฉลย passage เดียวกัน พลาดอีกครั้ง \\
+“What do I do when my turn comes around?” & top-10 ไม่มี chunk จากคู่มือหลักเลยสักอัน \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+ข้อที่สามชัดที่สุด: คำว่า “turn” ไปจับกับ “Automa's Turn”, “Once Between Turns”
+และ “turn order dial” --- ความหมายผิดทุกอัน
+
+นี่คือเหตุผลที่วัดได้สำหรับการทำ hybrid search ไม่ใช่การเดา
+
+\subsection{expansion เบียดคู่มือหลักออกไป}
+\label{sec:crowding}
+
+คำถาม “How does the first player token move between rounds?” คืน chunk จาก Asia
+expansion มา 8 จาก 10 อัน และคำตอบ (คู่มือหลักหน้า 5) ไม่อยู่ในนั้น Asia มีสัดส่วน 34\%
+ของ chunk ทั้งหมดและเขียนกฎของเกมหลักซ้ำด้วยถ้อยคำที่เกือบเหมือนกัน
+chunk ที่คล้ายกันหลายอันจึงแย่งช่องเดียวกันและดันต้นฉบับออกไป
+
+\subsection{ข้อเท็จจริงที่ไม่มีอยู่ใน chunk ไหนเลย}
+
+เมื่อถูกถามว่า “What is the Duet map?” ระบบตอบว่ามันใช้ “for exactly
+\textbf{2 players}” แต่ไม่มี chunk ไหนระบุจำนวนผู้เล่นของ Duet mode ---
+ยืนยันแล้วด้วยการ label คำถามข้อนั้นตรง ๆ แล้วไม่พบเฉลย ข้ออ้างนั้นจึงมาจากน้ำหนัก
+ในตัวโมเดลเอง ทั้งที่ prompt ที่สั่งให้ยึดกับ context, floor ของคะแนน และรายการ
+citation ทำงานถูกต้องในทุกจุดอื่น คำว่า \emph{“Use ONLY the context”} ชี้นำโมเดลได้
+แต่มัดมันไม่ได้
+
+\subsection{รายการที่ถูกตัดขาดตรงรอยต่อของ chunk}
+\label{sec:split}
+
+chunk หนึ่งเปิดด้วย “Powers on bird cards fall into 3 categories”
+แล้วอธิบายแบบ brown กับ pink จากนั้นก็จบ ส่วน white อยู่ใน chunk ถัดไป
+โดยมีข้อความของการ์ดนกคั่นกลาง ซึ่งเกิดจากการที่ PDF สองคอลัมน์
+ถูกอ่านสลับเข้ามาในเนื้อความ เมื่อถามว่า white power คืออะไร
+retrieval จัดอันดับ chunk ที่\emph{ประกาศ}ว่ามีสามแบบไว้อันดับหนึ่ง ---
+ซึ่งเป็นอันที่ไม่ได้นิยามแบบที่กำลังถูกถามถึง
+
+เรื่องนี้คือที่มาของการกวาดค่า chunking ในหัวข้อ~\ref{sec:sweep}
+
+\subsection{ถูกทุกอย่าง ยกเว้นไม่ครบ --- เคสล้มเหลวที่ใช้ demo}
+\label{sec:fc5}
+
+\begin{warnbox}
+\textbf{ถาม:} Can a bird power let me go over my egg limit?\\[0.3em]
+\textbf{ตอบ:} No, no power allows you to lay more eggs on a bird than its
+limit allows \code{[c0009]}
+\end{warnbox}
+
+คลังข้อมูลมีทั้งกฎทั่วไป (ภาคผนวกหน้า 8: ไม่มีความสามารถใดเกินลิมิตไข่ได้)
+\emph{และ} การ์ดของ Asia expansion (หน้า 12: “You may go 2 over its egg limit”)
+agent ดึง chunk มาสี่อัน ทั้งหมดอยู่หน้า 8 จากสามไฟล์ (คู่มือหลักซ้ำสองอัน)
+และไม่มีอันไหนเป็นข้อยกเว้นเลย
+
+ไม่มีอะไรในคำตอบที่เป็นเท็จ citation ก็ถูกต้องสำหรับ passage ที่มันอ่าน
+แต่ผู้เล่นที่ทำตามคำตอบนี้ยังเล่นผิดกฎอยู่ดี
+และ citation ก็ไม่ได้ให้เหตุผลใดที่จะทำให้เขาสงสัย
+
+\textbf{ทำไมข้อยกเว้นถึงเข้าถึงไม่ได้ และหัวข้อ~\ref{sec:sweep} แลกมาด้วยอะไร}\quad
+ข้อยกเว้นอยู่ใน index จริง --- \code{c0040}, Asia หน้า 12
+ยืนยันด้วยการค้นข้อความใน chunk ตรง ๆ
+มีสอง query ที่ดึงมันขึ้นมาไม่ได้ รวมถึง query ที่สร้างจากถ้อยคำของ passage นั้นเอง:
+\emph{query ที่มีวลี “2 over its egg limit” ไม่คืน chunk ที่มีวลี
+“2 over its egg limit”} chunk นั้นเปิดด้วยเรื่อง tucking และการนับแถว
+แล้วค่อยไปถึงกฎเรื่องไข่กลาง ๆ ทาง embedding เพียงตัวเดียวของมันจึงถูกครอบงำ
+ด้วยเนื้อหาที่มันขึ้นต้น
+
+ภายใต้ index แบบเก่า 300/45 กฎข้อนั้นเคยอยู่ที่\emph{หัว} chunk ของตัวเอง
+โดยไม่ถูกเจือจาง \textbf{การเปลี่ยน chunking ที่ทำให้ recall@4 ขึ้น 0.150
+คือสิ่งที่ฝังมันลงไป} การกวาดค่าวัดค่าเฉลี่ยจากคำถาม 20 ข้อ จึงมองไม่เห็นเรื่องนี้
+การปรับปรุงเป็นเรื่องจริง และมันไม่ฟรี
+
+\subsection{ขยะจากการแปลงไฟล์ผ่าน floor ของคะแนนได้}
+\label{sec:noise}
+
+เมื่อถูกถามว่า “thanks, that helped!” เส้นทางที่ไม่ใช่ agent ดึง chunk ที่ได้คะแนน
+\textbf{0.458} ซึ่งสูงกว่า floor ที่ 0.45 โดยเนื้อหาของ chunk นั้นคือ metadata ของการ
+export จาก InDesign (\code{WS\_EE\_BirdSwiftStart\_r4.indd 1 6/9/21 4:19 PM})
+ระบบบอกได้ถูกต้องว่าหาคำตอบไม่พบ แต่กลับพิมพ์ chunk ขยะอันนั้นเป็น Source ไว้ข้างล่าง
+ซึ่งบั๊กการแสดงผลนี้แก้แล้ว ส่วนพฤติกรรมของ retrieval ปล่อยไว้ตามเดิม
+เพราะเป็นหลักฐานเกี่ยวกับ floor และคลังข้อมูล ไม่ใช่สิ่งที่ควรกรองทิ้งไปเงียบ ๆ
+ทั้งนี้เส้นทาง agent ไม่เคยเจอปัญหานี้ เพราะมันไม่ได้ค้นเลย
+
+% ====================================================================== %
+\section{ข้อจำกัด}
+
+\subsection{abstention ยังใช้งานไม่ได้}
+\label{sec:abstain}
+
+ที่ \code{min\_score=0.45} คำถามที่ตอบไม่ได้ \textbf{1 จาก 4 ข้อ}
+เท่านั้นที่คืนค่าว่างได้ถูกต้อง
+
+\begin{lstlisting}
+highest top-1 score among unanswerable questions: 0.578
+lowest  top-1 score among answerable   questions: 0.540
+\end{lstlisting}
+
+ช่วงคะแนน\textbf{ทับกัน} ไม่มี threshold เดียวที่แยกสองกลุ่มนี้ออกจากกันได้:
+ยก floor ขึ้นเป็น 0.578 จะเริ่มปฏิเสธคำถามจริง ลดลงก็ตอบขยะ
+
+การกวาดค่าพบ config หนึ่งที่สองช่วงแยกกันได้ (200/40: 0.568 เทียบกับ 0.558) ---
+ห่างกัน 0.010 บนคำถามสี่ข้อ และ recall แย่กว่า นั่นคือ noise ไม่ใช่คำตอบ
+จึงรายงานไว้แทนที่จะนำมาใช้
+
+threshold บนค่า cosine เป็นเครื่องมือที่ผิดสำหรับงานนี้
+การ rerank shortlist ที่กว้างขึ้นด้วย cross-encoder
+หรือให้โมเดลตัดสินความเกี่ยวข้องก่อนตอบ จะเป็นการตัดสินจากเนื้อหาแทนระยะทาง
+
+\subsection{คลังข้อมูลคือข้อความที่สกัดได้ ไม่ใช่ตัวคู่มือ}
+\label{sec:pictures}
+
+มีคำถามหลายข้อถูกตัดทิ้ง เพราะคำตอบมีอยู่ในคู่มือแต่อยู่ในรูปภาพ:
+ผู้เล่นเริ่มด้วย action cube กี่อัน (พิมพ์อยู่บนกระดานผู้เล่น)
+จะเกิดอะไรขึ้นเมื่อแถวบนกระดานเต็ม (แสดงเป็นภาพ ไม่ได้เขียน)
+และใครได้เริ่มก่อน (อยู่ในภาพการตั้งเกม)
+ทั้ง vector และ BM25 ล้มเหลวทุกข้อ ซึ่งเป็นสิ่งที่แยก
+“ไม่มีอยู่ในคลัง” ออกจาก “retrieval หาไม่เจอ”
+
+ไม่มีการปรับปรุง retrieval แบบใดที่เข้าถึงข้อมูลเหล่านี้ได้ ต้องใช้ตัวสกัดที่อ่านภาพได้
+
+\subsection{ชุดประเมินผลมีขนาดเล็ก และ chunk เกือบซ้ำกันข้ามไฟล์}
+
+คำถามที่ตอบได้ 20 ข้อ เพียงพอที่จะแยก 0.533 ออกจาก 0.683 แต่ไม่พอที่จะตัดสิน
+ความต่างระดับไม่กี่ร้อยส่วน ความต่างที่ต่ำกว่า $\sim$0.02 ในการกวาดค่าจึงถูกรายงาน
+ว่าเป็น noise และ bias ของการ label ในหัวข้อ~\ref{sec:testset} ยังคงมีอยู่บางส่วน
+ที่อ่อนกว่านั้นคือคำถามที่ตอบไม่ได้มีเพียง 4 ข้อ น้อยเกินกว่าจะสรุปเรื่อง abstention ได้
+ทางแก้ที่ถูกที่สุดมีอยู่แล้วในรีโป คือคำถามอีก 6 ข้อใน \code{eval/skipped.txt} ที่ตรวจ
+แล้วว่าคลังไม่มีคำตอบ เลื่อนขึ้นมาเป็นกลุ่มนี้ได้โดยไม่ต้อง label เพิ่ม ตัวหารจะเป็น 10
+อีกข้อจำกัดหนึ่งคือ expansion เขียนกฎของเกมหลักซ้ำมาก การ dedupe จับ chunk
+ที่ข้อความเกือบเหมือนกันได้ แต่จับข้อความสี่ชุดที่ \emph{ใช้ถ้อยคำต่างกัน}
+แต่พูดกฎข้อเดียวกันไม่ได้ ซึ่งคือสิ่งที่ไปเต็มทุกช่องในหัวข้อ~\ref{sec:fc5}
+
+% ====================================================================== %
+\section{สิ่งที่จะทำต่อ}
+
+\textbf{hybrid retrieval ด้วย Reciprocal Rank Fusion}\quad
+หัวข้อ~\ref{sec:bm25wins} คือสามเคสที่วัดได้ว่า BM25 หาเจอสิ่งที่ embedding พลาด
+และ BM25 ทำคะแนนได้ 0.400 ด้วยตัวเอง การรวมผลด้วยอันดับเลี่ยงปัญหาสเกลที่เทียบกัน
+ไม่ได้ระหว่างคะแนน BM25 กับค่า cosine นี่คือก้าวต่อไปที่คุ้มค่าที่สุด
+
+\textbf{cross-encoder reranker บน shortlist ที่กว้างขึ้น}\quad
+ดึงมา 20 อัน rerank แล้วเก็บ 4 อัน วิธีนี้แก้หัวข้อ~\ref{sec:fc5} โดยตรง ---
+ข้อยกเว้นจะต้องผ่านแค่ shortlist ไม่ใช่ต้องติด top-4 ---
+และแก้หัวข้อ~\ref{sec:abstain} ด้วย เพราะ reranker ตัดสินจากเนื้อหาไม่ใช่ระยะทาง
+
+\textbf{เทียบผลรายคำถามระหว่าง config}\quad
+การกวาดค่ารายงานเป็นค่าเฉลี่ย ซึ่งเป็นเหตุผลที่หัวข้อ~\ref{sec:fc5} หลุดรอดไปได้
+การแสดงว่าการเปลี่ยนแต่ละครั้ง \emph{ทำพัง} คำถามข้อไหนบ้าง ไม่ใช่แค่ค่าเฉลี่ยที่ขยับ
+จะทำให้จับเรื่องนี้ได้ตั้งแต่ตอนกวาดค่า แทนที่จะมาเจอตอน demo
+
+อีกสองอย่างที่เล็กกว่าแต่มีหลักฐานรองรับแล้วเช่นกัน คือการกรองด้วย metadata
+ตามแหล่งที่มา เพื่อไม่ให้คำถามเรื่องกฎหลักต้องแข่งกับ chunk ของ Asia
+(หัวข้อ~\ref{sec:crowding}) ซึ่ง retriever รองรับการกรองด้วย \code{game} อยู่แล้ว
+และการทำความสะอาดคลังข้อมูลตอน ingest เพื่อตัดชื่อไฟล์ \code{.indd} เวลา export
+และเศษข้อความการ์ดนกที่ถูก index ราวกับว่าเป็นกฎออกไป (หัวข้อ~\ref{sec:noise})
+
+% ====================================================================== %
+\appendix
+% ให้หัวข้อภาคผนวกขึ้นต้นด้วยคำว่า "ภาคผนวก"
+\titleformat{\section}{\normalfont\Large\bfseries}
+  {\appendixname~\thesection}{0.7em}{}
+\section{การทำซ้ำทั้งหมด}
+
+\begin{lstlisting}
+cp .env.example .env ; uv sync --extra dev ; uv run pytest   # 76 tests, offline
+uv run --env-file .env python scripts/ingest.py            # build the index
+uv run --env-file .env python -m eval.run_eval             # section 3.4
+uv run --env-file .env python scripts/sweep_chunking.py    # section 3.5
+uv run --env-file .env python scripts/demo.py              # section 4
+\end{lstlisting}
+
+\textbf{ไฟล์ประกอบในรีโป}\quad โฟลเดอร์ \code{eval/} มีชุดคำถาม 24 ข้อที่ label แล้ว
+(\code{eval\_set.json}), ผลการวัดฉบับเต็ม (\code{RESULTS.md}, \code{CHUNKING.md}),
+หัวข้อ 4 ฉบับเต็ม (\code{FAILURE\_CASES.md}), บันทึกการรัน demo
+(\code{TRANSCRIPT.md}) และคำถามที่ตัดทิ้งระหว่าง label (\code{skipped.txt})
+\quad\textbf{การตั้งค่า}\quad \code{gemma-4-E4B-it} (chat), \code{bge-m3} (embeddings),
+\code{temperature=0}, chunk 450/90, \code{top\_k=4}, \code{min\_score=0.45},
+API key จาก environment
+
+\end{document}
